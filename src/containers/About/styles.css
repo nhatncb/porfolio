@@ -1,0 +1,9 @@
+.about-me-page .profile-container {
+  max-width: 498px;
+  height: calc(100vh - 218px);
+  width: 100%;
+  img {
+    margin-top: 88px;
+    display: block;
+  }
+}

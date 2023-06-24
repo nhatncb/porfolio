@@ -1,0 +1,14 @@
+.art-picture-page {
+  .modal-box {
+    max-width: unset;
+    background-color: #fff;
+    color: #000;
+    padding: 80px 114px;
+    border-radius: 0;
+  }
+  .close-icon {
+    position: absolute;
+    top: 24px;
+    right: 24px
+  }
+}

@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+.pointer, a {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  margin: 0px;
+  font-family: NanumMyeongjo;
+  color: #000;
+}
+li.ant-menu-item.ant-menu-item-only-child.ant-pro-base-menu-menu-item:not(.ant-menu-item-selected):not(:active):hover {
+  color: #fff;
+}
+
+@layer components {
+  .page-title {
+    @apply text-5xl font-extrabold
+  }
+}
+
+.side-bar {
+  border-right: 0.5px solid #000;
+  padding: 24px;
+}
+
+.section-title {
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+}
+
+.blur-text {
+  opacity: 0.25
+}
+
+.outline-btn {
+  padding: 8px 12px 8px 12px;
+  min-width: 80px;
+  border: 0.5px solid #000;
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.text-btn {
+  padding: 8px 12px 8px 12px;
+  min-width: 80px;
+  border: unset;
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.header {
+  border-bottom: 0.5px solid #000000;
+  padding: 48px;
+}
+
+.black-right-border {
+  border-right: 0.5px solid #000;
+}
+
+.black-left-border {
+  border-left: 0.5px solid #000;
+}
+
+
+.black-bottom-border {
+  border-bottom: 0.5px solid #000;
+}
+
+.black-top-border {
+  border-top: 0.5px solid #000;
+}
+
+.black-border {
+  border: 0.5px solid #000;
+}
+
+.right-nav-section {
+  padding: 27px 48px;
+}
