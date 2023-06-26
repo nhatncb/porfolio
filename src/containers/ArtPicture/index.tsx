@@ -4,17 +4,10 @@ import ArrowLeftIcon from '@icons/arrow-left.svg';
 import ArrowRightIcon from '@icons/arrow-right.svg';
 import CloseIcon from '@icons/close.svg';
 import PlusIcon from '@icons/plus-circle.svg';
-import Signature from '@icons/signature.svg';
-import HamburgetButton from 'component/HamburgerButton';
 
 const ArtPicture = () => {
   return (
     <div className="h-screen bg-white flex art-picture-page">
-      <div className="side-bar h-screen w-[72px] flex flex-col justify-between">
-        <div />
-        <Signature />
-        <HamburgetButton />
-      </div>
       <div className="flex flex-col justify-between w-full">
         <div className="flex py-16 pr-12 pl-[90px]">
           <div className="mr-[90px]">

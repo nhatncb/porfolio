@@ -3,8 +3,6 @@ import './styles.css';
 import ArrowLeftIcon from '@icons/arrow-left.svg';
 import ArrowRightIcon from '@icons/arrow-right.svg';
 import DownloadIcon from '@icons/download.svg';
-import Signature from '@icons/signature.svg';
-import HamburgetButton from 'component/HamburgerButton';
 import { Link } from 'react-router-dom';
 
 import NewsItem from './NewsItem';
@@ -12,11 +10,6 @@ import NewsItem from './NewsItem';
 const NewsPage = () => {
   return (
     <div className="h-screen bg-white flex about-me-page">
-      <div className="side-bar h-screen w-[72px] flex flex-col justify-between">
-        <div />
-        <Signature />
-        <HamburgetButton />
-      </div>
       <div className="flex-1 flex flex-col">
         <div className="header">
           <p className="m-0 page-title">About</p>

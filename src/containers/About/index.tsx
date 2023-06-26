@@ -1,17 +1,11 @@
 import './styles.css';
 
 import DownloadIcon from '@icons/download.svg';
-import HamburgetButton from 'component/HamburgerButton';
 import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
   return (
-    <div className="h-screen bg-white flex about-me-page">
-      <div className="side-bar h-screen w-[72px] flex flex-col justify-between">
-        <div className="flex flex-col gap-3 circle-logo"></div>
-        <div></div>
-        <HamburgetButton />
-      </div>
+    <div className="h-screen bg-white flex-1 about-me-page">
       <div className="flex-1">
         <div className="header">
           <p className="m-0 page-title">About me</p>

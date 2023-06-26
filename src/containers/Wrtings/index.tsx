@@ -1,16 +1,9 @@
-import Signature from '@icons/signature.svg';
-import HamburgetButton from 'component/HamburgerButton';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
 const Writings = () => {
   const { pathname } = useLocation();
   return (
-    <div className="h-screen bg-white flex">
-      <div className="side-bar h-screen w-[72px] flex flex-col justify-between">
-        <div />
-        <Signature />
-        <HamburgetButton />
-      </div>
+    <div className="h-screen bg-white flex flex-1">
       <div className="flex-1 flex flex-col">
         <div className="header">
           <p className="m-0 page-title">Writings</p>
