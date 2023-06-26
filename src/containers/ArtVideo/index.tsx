@@ -1,15 +1,18 @@
-import PlusIcon from '@icons/plus-circle.svg';
 import ArrowLeftIcon from '@icons/arrow-left.svg';
 import ArrowRightIcon from '@icons/arrow-right.svg';
+import PlusIcon from '@icons/plus-circle.svg';
 import ReactPlayer from 'react-player';
 
 const ArtVideo = () => {
   return (
     <div className="h-screen bg-white flex art-video-page">
-      <div className="side-bar h-screen w-[72px]">{/* <HamburgetButton /> */}</div>
       <div className="flex flex-col justify-between w-full">
         <div className="flex-1">
-          <ReactPlayer width="100%" height="100%" url="https://www.youtube.com/watch?v=ysz5S6PUM-U" />
+          <ReactPlayer
+            height="100%"
+            url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+            width="100%"
+          />
         </div>
         <div className="bottom-0 w-full">
           <div className="flex black-top-border">
@@ -23,7 +26,9 @@ const ArtVideo = () => {
                   <div className="text-[11px] leading-4 font-bold">#installation</div>
                 </div>
                 <div className="mt-2 leading-[18px] text-[12px]">
-                This work chronicles the personal experiences of a group of International Students who were invited to create and perform a monologue to their future selves. These individual portraits uncover the fragmented...
+                  This work chronicles the personal experiences of a group of International Students
+                  who were invited to create and perform a monologue to their future selves. These
+                  individual portraits uncover the fragmented...
                 </div>
                 <div className="mt-[2px] font-bold text-[12px]">read more</div>
               </div>

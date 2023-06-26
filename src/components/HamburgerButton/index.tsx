@@ -88,7 +88,7 @@ const HamburgetButton = () => {
           </label>
         </div>
         <div className="drawer-side z-10">
-          <label className="drawer-overlay" htmlFor="my-drawer"></label>
+          <label className="drawer-overlay" htmlFor="my-drawer" />
           <div className="items-container">
             {categories.map((category) => {
               const isActiveTitle = category.activeKeys.includes(pathname);

@@ -1,9 +1,9 @@
+import LeftSideMenu from 'components/LeftSideMenu';
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router';
-import { Outlet } from 'react-router-dom';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -15,7 +15,7 @@ const App = () => {
     window.scrollTo(0, 0);
   }, [key]);
 
-  return <Outlet />;
+  return <LeftSideMenu />;
 };
 
 export default App;
