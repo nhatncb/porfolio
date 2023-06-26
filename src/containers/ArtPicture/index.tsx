@@ -1,15 +1,18 @@
-import PlusIcon from '@icons/plus-circle.svg';
+import './styles.css';
+
 import ArrowLeftIcon from '@icons/arrow-left.svg';
 import ArrowRightIcon from '@icons/arrow-right.svg';
 import CloseIcon from '@icons/close.svg';
-
-import './styles.css';
+import PlusIcon from '@icons/plus-circle.svg';
+import Signature from '@icons/signature.svg';
 import HamburgetButton from 'component/HamburgerButton';
 
 const ArtPicture = () => {
   return (
     <div className="h-screen bg-white flex art-picture-page">
-      <div className="side-bar h-screen w-[72px]">
+      <div className="side-bar h-screen w-[72px] flex flex-col justify-between">
+        <div />
+        <Signature />
         <HamburgetButton />
       </div>
       <div className="flex flex-col justify-between w-full">
@@ -18,9 +21,9 @@ const ArtPicture = () => {
             <img alt="" src="/images/DSC_0412_1.png" />
           </div>
           <div className="flex flex-col pr-12 gap-2">
-            <img width={212} height={132} alt="" src="/images/DSC_0412_1.png" />
-            <img width={212} height={132} alt="" src="/images/DSC_0412_2.png" />
-            <img width={212} height={132} alt="" src="/images/DSC_0412_3.png" />
+            <img alt="" height={132} src="/images/DSC_0412_1.png" width={212} />
+            <img alt="" height={132} src="/images/DSC_0412_2.png" width={212} />
+            <img alt="" height={132} src="/images/DSC_0412_3.png" width={212} />
           </div>
         </div>
         <div className="bottom-0 w-full">
@@ -71,8 +74,8 @@ const ArtPicture = () => {
           </div>
         </div>
       </div>
-      <dialog id="art_picture" className="modal">
-        <form method="dialog" className="modal-box">
+      <dialog className="modal" id="art_picture">
+        <form className="modal-box" method="dialog">
           <div className="close-icon" onClick={() => (window as any).art_picture.close()}>
             <CloseIcon />
           </div>
@@ -80,7 +83,7 @@ const ArtPicture = () => {
             <div className="text-[11px] leading-4 font-bold">#sculpture</div>
             <div className="text-[11px] leading-4 font-bold">#installation</div>
           </div>
-          <div className="text-[24px] mt-10 font-[800]">Eat Y Apple</div>
+          <div className="text-[24px] mt-10 font-[700]">Eat Y Apple</div>
           <div className="text-[12px] mt-8 text-[12px]">
             This work chronicles the personal experiences of a group of International Students who
             were invited to create and perform a monologue to their future selves. These individual
