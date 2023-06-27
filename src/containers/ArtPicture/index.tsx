@@ -1,9 +1,9 @@
 import './styles.css';
 
-import ArrowLeftIcon from '@icons/arrow-left.svg';
-import ArrowRightIcon from '@icons/arrow-right.svg';
-import CloseIcon from '@icons/close.svg';
-import PlusIcon from '@icons/plus-circle.svg';
+import ArrowLeftIcon from 'assets/icons/arrow-left.svg';
+import ArrowRightIcon from 'assets/icons/arrow-right.svg';
+import CloseIcon from 'assets/icons/close.svg';
+import PlusIcon from 'assets/icons/plus-circle.svg';
 
 const ArtPicture = () => {
   return (

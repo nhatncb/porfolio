@@ -1,38 +1,11 @@
-.hamburger-lines {
-  display: block;
-  width: 24px;
-  gap: 5px;
-  z-index: 2;
+.items-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-
-.hamburger-lines .line {
-  display: block;
-  height: 1px;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  border-radius: 10px;
-  background: #000;
-}
-
-.hamburger-lines .line1 {
-  transform-origin: 0% 0%;
-  transition: transform 0.4s ease-in-out;
-}
-
-.hamburger-lines .line2 {
-  transition: transform 0.2s ease-in-out;
-}
-
-.hamburger-lines .line3 {
-  transform-origin: 0% 100%;
-  transition: transform 0.4s ease-in-out;
-}
-
-.items-container {
-  width: 480px;
+  max-width: 480px;
   background-color: #fff;
   height: 100%;
-  padding: 71px 16px 16px 90px;
+  padding: 24px 24px 24px 24px;
 }

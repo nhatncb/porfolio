@@ -1,4 +1,4 @@
-import RightDownloadIcon from '@icons/thin-right-download.svg';
+import RightDownloadIcon from 'assets/icons/thin-right-download.svg';
 
 const ArtisticEducation = () => {
   return (
