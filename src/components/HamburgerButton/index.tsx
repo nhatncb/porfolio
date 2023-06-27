@@ -1,5 +1,7 @@
 import './styles.css';
 
+import { animated, to, useSpring } from '@react-spring/web';
+import useGlobalState from 'hooks/useGlobalState';
 import { Link, useLocation } from 'react-router-dom';
 
 const aboutMeMenus = [
@@ -74,46 +76,81 @@ const categories = [
 ] as const;
 
 const HamburgetButton = () => {
+  const { drawer, setDrawer } = useGlobalState();
   const { pathname } = useLocation();
+  const props = useSpring({
+    rotate: drawer ? 45 : 0,
+    opacity: drawer ? 0 : 1,
+  });
   return (
     <div className="drawer nav-container">
       <div className="drawer">
-        <input className="drawer-toggle" id="my-drawer" type="checkbox" />
+        <input
+          checked={drawer}
+          className="drawer-toggle"
+          id="my-drawer"
+          onChange={(e) => setDrawer(e.target.checked)}
+          type="checkbox"
+        />
         <div className="drawer-content">
           {/* Page content here */}
-          <label className="hamburger-lines" htmlFor="my-drawer">
-            <span className="line line1"></span>
-            <span className="line line2"></span>
-            <span className="line line3"></span>
+          <label
+            className="w-[24px] h-[24px] flex justify-center items-center flex-col gap-[6px] pointer relative mx-[3px]"
+            htmlFor="my-drawer"
+          >
+            <animated.span
+              className="w-full border-b-[1px] border-black"
+              style={{ opacity: props.opacity }}
+            />
+            <animated.span
+              className="w-full border-b-[1px] border-black absolute"
+              style={{ rotate: props.rotate }}
+            />
+            <animated.span
+              className="w-full border-b-[1px] border-black"
+              style={{ opacity: props.opacity }}
+            />
+            <animated.span
+              className="w-full border-b-[1px] border-black absolute"
+              style={{ rotate: to(props.rotate, (rotate) => -rotate) }}
+            />
+            <animated.span
+              className="w-full border-b-[1px] border-black"
+              style={{ opacity: props.opacity }}
+            />
           </label>
         </div>
-        <div className="drawer-side z-10">
+        <div className="drawer-side z-10 ml-[72px] w-[calc(100%-72px)]">
           <label className="drawer-overlay" htmlFor="my-drawer" />
           <div className="items-container">
-            {categories.map((category) => {
-              const isActiveTitle = category.activeKeys.includes(pathname);
-              return (
-                <div className="mb-10" key={category.title}>
-                  <div
-                    className={`section-title mb-3 ${isActiveTitle ? 'font-bold' : 'blur-text'}`}
-                  >
-                    {category.title}
+            <div>
+              {categories.map((category) => {
+                const isActiveTitle = category.activeKeys.includes(pathname);
+                return (
+                  <div className="mb-10" key={category.title}>
+                    <div
+                      className={`section-title mb-3 ${isActiveTitle ? 'font-bold' : 'blur-text'}`}
+                    >
+                      {category.title}
+                    </div>
+                    {category.menus.map((subMenu) => {
+                      const isActivePath = pathname === subMenu.url;
+                      return (
+                        <Link
+                          className={`${
+                            isActivePath ? 'font-bold' : 'blur-text'
+                          } text-lg mb-3 block`}
+                          key={subMenu.title}
+                          to={subMenu.url}
+                        >
+                          {subMenu.title}
+                        </Link>
+                      );
+                    })}
                   </div>
-                  {category.menus.map((subMenu) => {
-                    const isActivePath = pathname === subMenu.url;
-                    return (
-                      <Link
-                        className={`${isActivePath ? 'font-bold' : 'blur-text'} text-lg mb-3 block`}
-                        key={subMenu.title}
-                        to={subMenu.url}
-                      >
-                        {subMenu.title}
-                      </Link>
-                    );
-                  })}
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

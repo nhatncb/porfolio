@@ -1,7 +1,7 @@
-import ArrowLeftIcon from '@icons/arrow-left.svg';
-import ArrowRightIcon from '@icons/arrow-right.svg';
-import PlusIcon from '@icons/plus-circle.svg';
-import RightDownloadIcon from '@icons/right_download.svg';
+import ArrowLeftIcon from 'assets/icons/arrow-left.svg';
+import ArrowRightIcon from 'assets/icons/arrow-right.svg';
+import PlusIcon from 'assets/icons/plus-circle.svg';
+import RightDownloadIcon from 'assets/icons/right_download.svg';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { data } from '../Books/data';

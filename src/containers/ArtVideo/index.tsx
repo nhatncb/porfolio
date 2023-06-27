@@ -1,6 +1,6 @@
-import ArrowLeftIcon from '@icons/arrow-left.svg';
-import ArrowRightIcon from '@icons/arrow-right.svg';
-import PlusIcon from '@icons/plus-circle.svg';
+import ArrowLeftIcon from 'assets/icons/arrow-left.svg';
+import ArrowRightIcon from 'assets/icons/arrow-right.svg';
+import PlusIcon from 'assets/icons/plus-circle.svg';
 import ReactPlayer from 'react-player';
 
 const ArtVideo = () => {

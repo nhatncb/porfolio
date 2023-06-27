@@ -5,7 +5,6 @@ import ArtVideo from 'containers/ArtVideo';
 import Artworks from 'containers/Artworks';
 import Performance from 'containers/Artworks/Performance';
 import Home from 'containers/Home';
-import NewsPage from 'containers/News';
 import Research from 'containers/Research';
 import ArtisticEducation from 'containers/Research/ArtisticEducation';
 import Transversality from 'containers/Research/Transversality';
@@ -35,7 +34,7 @@ export const indexRoutes: RouteObject[] = [
       },
       {
         path: 'news',
-        element: <NewsPage />,
+        element: <AboutPage />,
       },
       {
         path: 'art-picture',

@@ -1,4 +1,4 @@
-import RightDownloadIcon from '@icons/right_download.svg';
+import RightDownloadIcon from 'assets/icons/right_download.svg';
 import { Link } from 'react-router-dom';
 
 const BookItem = ({
