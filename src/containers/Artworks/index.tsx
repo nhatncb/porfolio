@@ -9,13 +9,13 @@ const Artworks = () => {
           <p className="m-0 page-title">Artworks</p>
         </div>
         <div className="black-bottom-border">
-          <div className="px-[48px] py-[18px] flex-1 black-right-border">
-            <Link to="/artworks/verses">
+          <div className="flex px-[48px] py-[18px] flex-1 black-right-border gap-3">
+            <Link to="/artworks/performance">
               <button className={pathname === '/artworks/performance' ? 'outline-btn' : 'text-btn'}>
                 #performance
               </button>
             </Link>
-            <Link to="/artworks/essays">
+            <Link to="/artworks/sculpture">
               <button className={pathname === '/artworks/sculpture' ? 'outline-btn' : 'text-btn'}>
                 #sculpture
               </button>
@@ -35,7 +35,7 @@ const Artworks = () => {
               </button>
             </Link>
             <Link to="/artworks/video">
-              <button className={pathname === '/artworks/artworks' ? 'outline-btn' : 'text-btn'}>
+              <button className={pathname === '/artworks/video' ? 'outline-btn' : 'text-btn'}>
                 #video
               </button>
             </Link>

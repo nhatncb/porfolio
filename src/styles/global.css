@@ -52,7 +52,6 @@ li.ant-menu-item.ant-menu-item-only-child.ant-pro-base-menu-menu-item:not(.ant-m
 
 .outline-btn {
   padding: 8px 12px 8px 12px;
-  min-width: 80px;
   border: 0.5px solid #000;
   border-radius: 4px;
   background-color: transparent;
@@ -63,7 +62,6 @@ li.ant-menu-item.ant-menu-item-only-child.ant-pro-base-menu-menu-item:not(.ant-m
 
 .text-btn {
   padding: 8px 12px 8px 12px;
-  min-width: 80px;
   border: unset;
   border-radius: 4px;
   background-color: transparent;
