@@ -9,7 +9,7 @@ const Research = () => {
           <p className="m-0 page-title">Research</p>
         </div>
         <div className="black-bottom-border">
-          <div className="px-[48px] py-[18px] flex-1 black-right-border">
+          <div className="px-[48px] py-[18px] flex-1 black-right-border gap-2 flex">
             <Link to="/research/transversality">
               <button
                 className={pathname === '/research/transversality' ? 'outline-btn' : 'text-btn'}

@@ -1,5 +1,3 @@
-import './styles.css';
-
 import ArrowLeftIcon from '@icons/arrow-left.svg';
 import ArrowRightIcon from '@icons/arrow-right.svg';
 import DownloadIcon from '@icons/download.svg';
@@ -9,7 +7,7 @@ import NewsItem from './NewsItem';
 
 const NewsPage = () => {
   return (
-    <div className="h-screen bg-white flex about-me-page">
+    <div className="h-screen bg-white flex flex-1">
       <div className="flex-1 flex flex-col">
         <div className="header">
           <p className="m-0 page-title">About</p>

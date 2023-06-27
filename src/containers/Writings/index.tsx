@@ -9,7 +9,7 @@ const Writings = () => {
           <p className="m-0 page-title">Writings</p>
         </div>
         <div className="black-bottom-border">
-          <div className="px-[48px] py-[18px] flex-1 black-right-border">
+          <div className="px-[48px] py-[18px] flex-1 black-right-border flex gap-2">
             <Link to="/writings/verses">
               <button className={pathname === '/writings/verses' ? 'outline-btn' : 'text-btn'}>
                 verses
