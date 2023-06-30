@@ -1,30 +1,50 @@
+import { animated, useSprings } from '@react-spring/web';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+
+const MENUS = [
+  {
+    label: 'verses',
+    to: '/writings/verses',
+  },
+  {
+    label: 'essays',
+    to: '/writings/essays',
+  },
+  {
+    label: 'books',
+    to: '/writings/books',
+  },
+];
 
 const Writings = () => {
   const { pathname } = useLocation();
+
+  const [springs] = useSprings(
+    MENUS.length,
+    (i) => ({
+      borderColor: MENUS[i]?.to === pathname ? '#000' : 'transparent',
+    }),
+    [pathname],
+  );
+
   return (
     <div className="h-screen bg-white flex flex-1">
       <div className="flex-1 flex flex-col">
         <div className="header">
           <p className="m-0 page-title">Writings</p>
         </div>
-        <div className="black-bottom-border">
-          <div className="px-[48px] py-[18px] flex-1 black-right-border flex gap-2">
-            <Link to="/writings/verses">
-              <button className={pathname === '/writings/verses' ? 'outline-btn' : 'text-btn'}>
-                verses
-              </button>
-            </Link>
-            <Link to="/writings/essays">
-              <button className={pathname === '/writings/essays' ? 'outline-btn' : 'text-btn'}>
-                essays
-              </button>
-            </Link>
-            <Link to="/writings/books">
-              <button className={pathname === '/writings/books' ? 'outline-btn' : 'text-btn'}>
-                books
-              </button>
-            </Link>
+        <div className="flex flex-shrink-0 black-bottom-border h-[72px]">
+          <div className="px-[48px] flex-auto flex gap-[12px] items-center">
+            {springs.map((props, index) => (
+              <Link key={MENUS[index]?.to} to={MENUS[index]?.to || ''}>
+                <animated.button
+                  className={`text-btn ${MENUS[index]?.to !== pathname ? 'hover-underline' : ''}`}
+                  style={props}
+                >
+                  {MENUS[index]?.label}
+                </animated.button>
+              </Link>
+            ))}
           </div>
         </div>
         <Outlet />
