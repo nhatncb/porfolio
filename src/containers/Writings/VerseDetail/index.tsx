@@ -31,27 +31,22 @@ const VerseDetail = () => {
   return (
     <div className="h-screen bg-white flex flex-1">
       <div className="flex-1 flex flex-col">
-        <div className="flex flex-1">
-          <div className="black-right-border black-bottom-border flex-1">
-            <div>
-              <div className="max-w-[1056px] p-16 mx-auto grid-cols-12 grid gap-x-6 gap-y-[88px] whitespace-pre-line">
-                <div className="col-span-2">{detail?.verse1}</div>
-                <div className="col-span-10" />
-                <div className="col-span-2" />
-                <div className="col-span-2">{detail?.verse2}</div>
-                <div className="col-span-8"></div>
-                <div className="col-span-4"></div>
-                <div className="col-span-2" />
-                <div className="col-span-6">{detail?.verse3}</div>
-              </div>
-            </div>
+        <div className="flex-1 black-bottom-border px-[48px] grid-cols-12 grid-rows-6	grid gap-[24px] whitespace-pre-line">
+          <div className="row-start-2 col-start-2 col-span-2 relative">
+            <span className="absolute top-0 left-0">{detail?.verse1}</span>
+          </div>
+          <div className="row-start-3 col-start-4 col-span-2 relative">
+            <span className="absolute top-0 left-0">{detail?.verse2}</span>
+          </div>
+          <div className="row-start-4 col-start-6 col-span-2 relative">
+            <span className="absolute top-0 left-0">{detail?.verse3}</span>
           </div>
         </div>
         <div className="px-12 py-[46px] text-right black-bottom-border text-[32px] font-bold">
           {detail?.title}
         </div>
         <div className="flex py-6 px-[48px] justify-between">
-          <Link className="flex" to="/writings/verses">
+          <Link className="flex items-center" to="/writings/verses">
             <PlusIcon />
             <div className="ml-2 text-[12px] font-bold leading-[18px]">verse list</div>
           </Link>

@@ -1,4 +1,4 @@
-import { animated, useSprings, useTransition } from '@react-spring/web';
+import { animated, useSprings } from '@react-spring/web';
 import DownloadIcon from 'assets/icons/download.svg';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -38,15 +38,6 @@ const AboutPage = () => {
     [location.pathname],
   );
 
-  const transitions = useTransition(location.pathname, {
-    key: location.pathname,
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    exitBeforeEnter: true,
-    config: { duration: 300 },
-  });
-
   return (
     <div className="bg-white w-full flex flex-col">
       <div className="header">
@@ -56,7 +47,12 @@ const AboutPage = () => {
         <div className="px-[48px] flex-auto flex gap-[12px] black-right-border items-center">
           {springs.map((props, index) => (
             <Link key={MENUS[index]?.to} to={MENUS[index]?.to || ''}>
-              <animated.button className="text-btn hover-underline" style={props}>
+              <animated.button
+                className={`text-btn ${
+                  MENUS[index]?.to !== location.pathname ? 'hover-underline' : ''
+                }`}
+                style={props}
+              >
                 {MENUS[index]?.label}
               </animated.button>
             </Link>
@@ -71,13 +67,7 @@ const AboutPage = () => {
           </button>
         </div>
       </div>
-      {transitions((style, item) => {
-        return (
-          <animated.div className="h-full" style={style}>
-            {renderContent(item)}
-          </animated.div>
-        );
-      })}
+      <div className="h-full">{renderContent(location.pathname)}</div>
     </div>
   );
 };
