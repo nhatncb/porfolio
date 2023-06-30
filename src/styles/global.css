@@ -164,3 +164,7 @@ li.ant-menu-item.ant-menu-item-only-child.ant-pro-base-menu-menu-item:not(.ant-m
 .hover-underline:hover::after {
   max-width: 100%;
 }
+
+.transparent-border {
+  border: 0.5px solid transparent;
+}

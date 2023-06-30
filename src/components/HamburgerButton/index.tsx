@@ -124,7 +124,7 @@ const HamburgetButton = () => {
         <div className="items-container">
           <div>
             {categories.map((category) => {
-              const isActiveTitle = category.activeKeys.includes(pathname);
+              const isActiveTitle = !!category.activeKeys.find((key) => pathname.startsWith(key));
               return (
                 <div className="mb-10" key={category.title}>
                   <div
@@ -133,7 +133,7 @@ const HamburgetButton = () => {
                     {category.title}
                   </div>
                   {category.menus.map((subMenu) => {
-                    const isActivePath = pathname === subMenu.url;
+                    const isActivePath = pathname.startsWith(subMenu.url);
                     return (
                       <Link
                         className={`${isActivePath ? 'font-bold' : 'blur-text'} text-lg mb-3 block`}

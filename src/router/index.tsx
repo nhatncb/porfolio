@@ -1,9 +1,8 @@
 import Root from 'containers';
 import AboutPage from 'containers/About';
-import ArtPicture from 'containers/ArtPicture';
-import ArtVideo from 'containers/ArtVideo';
 import Artworks from 'containers/Artworks';
-import Performance from 'containers/Artworks/Performance';
+import ArtworkDetail from 'containers/Artworks/ArtworkDetail';
+import Performance from 'containers/Artworks/ArtworkList';
 import Home from 'containers/Home';
 import Research from 'containers/Research';
 import ArtisticEducation from 'containers/Research/ArtisticEducation';
@@ -37,14 +36,6 @@ export const indexRoutes: RouteObject[] = [
         element: <AboutPage />,
       },
       {
-        path: 'art-picture',
-        element: <ArtPicture />,
-      },
-      {
-        path: 'art-video',
-        element: <ArtVideo />,
-      },
-      {
         path: 'artworks',
         element: <Artworks />,
         children: [
@@ -55,6 +46,10 @@ export const indexRoutes: RouteObject[] = [
           { path: 'video', element: <Performance type="video" /> },
           { path: 'others', element: <Performance type="others" /> },
         ],
+      },
+      {
+        path: 'artworks/:type/:id',
+        element: <ArtworkDetail />,
       },
       {
         path: 'writings',
