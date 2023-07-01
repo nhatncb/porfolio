@@ -1,8 +1,8 @@
-import { animated, useSprings } from '@react-spring/web';
+import { animated, useSpring, useSprings } from '@react-spring/web';
 import ArrowLeftIcon from 'assets/icons/arrow-left.svg';
 import ArrowRightIcon from 'assets/icons/arrow-right.svg';
 import PlusIcon from 'assets/icons/plus-circle.svg';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { useNavigate, useParams } from 'react-router';
 import TruncateMarkup from 'react-truncate-markup';
@@ -10,6 +10,7 @@ import TruncateMarkup from 'react-truncate-markup';
 import { data } from '../data';
 
 const ArtworkDetail = () => {
+  const ref = useRef<HTMLDivElement>(null);
   const { id, type = '' } = useParams();
   const detail = data.find((item) => item.id === id);
   const list = data.filter((item) => item.tags.includes(type));
@@ -25,6 +26,13 @@ const ArtworkDetail = () => {
     }),
     [activeArt],
   );
+  const [spring, api] = useSpring(() => ({ height: '100%' }), []);
+
+  useEffect(() => {
+    api.start({
+      height: showMore ? `${(ref.current?.offsetHeight || 0) + 46}px` : '163px',
+    });
+  }, [api, ref, showMore]);
 
   const handleNavigate = (next?: boolean) => {
     const currentIndex = list.findIndex((item) => item.id === id);
@@ -73,21 +81,18 @@ const ArtworkDetail = () => {
   return (
     <div className="h-screen bg-white flex flex-1">
       <div className="flex flex-col justify-between w-full">
-        <div className={`flex ${arts.length > 1 ? 'py-16 px-12' : 'p-0 flex-1'} overflow-hidden`}>
+        <div
+          className={`flex ${arts.length > 1 ? 'py-16 px-12 pr-0' : 'p-0 flex-1'} overflow-hidden`}
+        >
           <animated.div
+            className="flex-1"
             key={activeArt}
             style={{
               opacity: springs[activeArt]?.opacity,
             }}
           >
             {arts[activeArt]?.type === 'image' ? (
-              <img
-                alt=""
-                src={arts[activeArt]?.url}
-                style={{
-                  width: arts.length > 1 ? 900 : '100vw',
-                }}
-              />
+              <img alt="" className="w-full h-full object-cover" src={arts[activeArt]?.url} />
             ) : (
               <ReactPlayer height="100%" url={arts[activeArt]?.url} width="calc(100vw - 71px)" />
             )}
@@ -99,7 +104,7 @@ const ArtworkDetail = () => {
                   return (
                     <animated.img
                       alt=""
-                      className={`transparent-border p-2 not:(:first):-mt-[8.5px] -mb-[0.5px]`}
+                      className={`transparent-border p-2 not:(:first):-mt-[8.5px] -mb-[0.5px] cursor-pointer object-cover`}
                       height={132}
                       key={index}
                       onClick={() => setActiveArt(index)}
@@ -121,13 +126,12 @@ const ArtworkDetail = () => {
             </div>
             <div className="relative w-full">
               <animated.div
-                className={`min-h-[127px] bg-white w-full px-10 ${
-                  showMore ? 'opacity-[0.85]' : 'opacity-1 h-full'
-                } ${
-                  showMore ? 'absolute' : ''
-                } bottom-0 right-0 py-[23px] black-top-border black-left-border`}
+                className={`bg-white w-full px-10 overflow-hidden absolute bottom-0 right-0 py-[23px] black-top-border black-left-border ${
+                  showMore ? 'opacity-[0.85]' : 'opacity-1'
+                }`}
+                style={spring}
               >
-                <div>
+                <div ref={ref}>
                   {showMore ? (
                     <>
                       <div className={`leading-[18px] text-[12px]`}>{detail?.content}</div>
