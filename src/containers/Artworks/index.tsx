@@ -53,7 +53,7 @@ const Artworks = () => {
               <Link key={MENUS[index]?.to} to={MENUS[index]?.to || ''}>
                 <animated.button
                   className={`text-btn ${MENUS[index]?.to !== pathname ? 'hover-underline' : ''}`}
-                  style={props}
+                  style={{ borderColor: props.borderColor }}
                 >
                   {MENUS[index]?.label}
                 </animated.button>
@@ -69,7 +69,9 @@ const Artworks = () => {
             </button>
           </div>
         </div>
-        <Outlet />
+        <div className="flex-1 flex content-container w-[calc(100vw_-_72px)] [&>*:nth-child(4)]:border-r-0">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

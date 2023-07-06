@@ -42,7 +42,7 @@ const VerseDetail = () => {
             <span className="absolute top-0 left-0">{detail?.verse3}</span>
           </div>
         </div>
-        <div className="px-12 py-[46px] text-right black-bottom-border text-[32px] font-bold">
+        <div className="h-[127px] px-12 py-[25px] flex justify-end items-center black-bottom-border text-[32px] font-bold">
           {detail?.title}
         </div>
         <div className="flex py-6 px-[48px] justify-between">

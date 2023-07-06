@@ -1,7 +1,7 @@
 export const data = [
   {
     title:
-      'Facilitating Community Research for Social Change Case Studies in Qualitative, Arts-Based and Visual Research',
+      'Facilitating Community Research for Social Change: Case Studies in Qualitative, Arts-Based and Visual Research',
     author: 'by Casey Burkholder, Funké Aladejebi, Joshua Schwab-Cartas',
     image: '/images/book_1.png',
     url1: 'amazon',

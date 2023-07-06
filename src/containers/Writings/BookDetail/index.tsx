@@ -32,8 +32,8 @@ const BookDetail = () => {
 
   return (
     <div className="h-screen bg-white flex flex-col flex-1">
-      <div className="px-12 py-8 black-bottom-border">
-        <p className="m-0 text-[32px] font-bold">{detail?.title}</p>
+      <div className="px-12 py-8 black-bottom-border h-[136px] flex items-center">
+        <p className="m-0 text-[32px] font-bold line-clamp-2">{detail?.title}</p>
       </div>
       <div className="flex flex-1 overflow-hidden">
         <div className="black-right-border black-bottom-border flex flex-col flex-1">
@@ -45,7 +45,7 @@ const BookDetail = () => {
           </div>
         </div>
         <div className="flex flex-col">
-          <div className="px-12 py-10 w-[456px] flex-1">
+          <div className="px-12 py-10 w-[456px] flex-1 overflow-auto">
             <img alt="" className="w-full" src={detail?.image} />
           </div>
           <div className="grid grid-cols-[50%_50%] black-top-border black-bottom-border">

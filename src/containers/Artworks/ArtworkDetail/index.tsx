@@ -5,11 +5,20 @@ import PlusIcon from 'assets/icons/plus-circle.svg';
 import { useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { useNavigate, useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import TruncateMarkup from 'react-truncate-markup';
 
 import { data } from '../data';
 
+function useFirstRender() {
+  const ref = useRef(true);
+  const firstRender = ref.current;
+  ref.current = false;
+  return firstRender;
+}
+
 const ArtworkDetail = () => {
+  const isFirstRender = useFirstRender();
   const ref = useRef<HTMLDivElement>(null);
   const { id, type = '' } = useParams();
   const detail = data.find((item) => item.id === id);
@@ -26,13 +35,15 @@ const ArtworkDetail = () => {
     }),
     [activeArt],
   );
-  const [spring, api] = useSpring(() => ({ height: '100%' }), []);
+  const [spring, api] = useSpring(() => ({ height: '127px' }), []);
 
   useEffect(() => {
-    api.start({
-      height: showMore ? `${(ref.current?.offsetHeight || 0) + 46}px` : '163px',
-    });
-  }, [api, ref, showMore]);
+    if (ref.current && !isFirstRender) {
+      api.start({
+        height: showMore ? `${(ref.current?.offsetHeight || 0) + 46}px` : '127px',
+      });
+    }
+  }, [api, isFirstRender, ref, showMore]);
 
   const handleNavigate = (next?: boolean) => {
     const currentIndex = list.findIndex((item) => item.id === id);
@@ -63,9 +74,9 @@ const ArtworkDetail = () => {
         </div>
         <div className="flex gap-3">
           {detail?.tags.map((tag) => (
-            <div className="text-[12px] leading-4 font-bold" key={tag}>
-              #{tag}
-            </div>
+            <Link key={tag} to={`/artworks/${tag}`}>
+              <div className="text-[12px] leading-4 font-bold">#{tag}</div>
+            </Link>
           ))}
         </div>
       </div>
@@ -121,8 +132,8 @@ const ArtworkDetail = () => {
         </div>
         <div className="bottom-0 w-full">
           <div className="flex">
-            <div className="w-full py-[45px] px-[48px] max-w-[648px] black-top-border">
-              <div className="text-[32px] w-full leading-9">{detail?.title}</div>
+            <div className="w-full flex items-center py-[27px] h-[127px] px-[48px] max-w-[648px] black-top-border">
+              <div className="text-[32px] font-bold w-full leading-9">{detail?.title}</div>
             </div>
             <div className="relative w-full">
               <animated.div
@@ -147,7 +158,7 @@ const ArtworkDetail = () => {
             </div>
           </div>
           <div className="flex py-[45px] px-[48px] black-top-border justify-between">
-            <div className="flex">
+            <div className="flex items-center">
               <PlusIcon />
               <div className="ml-2 text-[12px] font-bold leading-[18px] hover-underline">
                 view artwork list
