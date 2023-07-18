@@ -136,7 +136,9 @@ const HamburgetButton = () => {
                     const isActivePath = pathname.startsWith(subMenu.url);
                     return (
                       <Link
-                        className={`${isActivePath ? 'font-bold' : 'blur-text'} text-lg mb-3 block`}
+                        className={`${
+                          isActivePath ? 'font-bold' : 'blur-text'
+                        } text-lg mb-2 block leading-[24px]`}
                         key={subMenu.title}
                         onClick={() => setDrawer(false)}
                         to={subMenu.url}

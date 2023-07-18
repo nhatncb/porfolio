@@ -32,7 +32,7 @@ const LeftSideMenu = () => {
     if (!drawer && location.pathname === '/') {
       return (
         <div className="[writing-mode:vertical-lr] typewriter rotate-180 font-bold">
-          Đỗ Nguyễn Lập Xuân
+          Do Nguyen Lap Xuan
         </div>
       );
     }

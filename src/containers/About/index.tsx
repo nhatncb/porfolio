@@ -40,7 +40,7 @@ const AboutPage = () => {
 
   return (
     <div className="bg-white w-full flex flex-col">
-      <div className="header">
+      <div className="header h-[112px]">
         <p className="m-0 page-title">About</p>
       </div>
       <div className="flex flex-shrink-0 black-bottom-border h-[72px]">
@@ -60,9 +60,9 @@ const AboutPage = () => {
         </div>
         <div className="basis-[193px] flex justify-center items-center">
           <button className="text-btn hover-underline">
-            <span className="flex items-center gap-[8px]">
+            <span className="flex items-center gap-3 svg-24 normal-text">
               <DownloadIcon />
-              download csv
+              download CV
             </span>
           </button>
         </div>

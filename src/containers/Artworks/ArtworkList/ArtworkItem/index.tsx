@@ -10,9 +10,11 @@ const ArtworkItem = ({
   return (
     <div className="flex-[0_0_25%] black-right-border">
       <div className="pt-[88px] px-6 flex flex-col justify-between h-full">
-        <div className="max-w-[246px] mx-auto">
+        <div className="px-[24px]">
           <Link to={`/artworks/${activeType}/${data.id}`}>
-            <div className="text-[20px] font-bold min-h-[96px] mb-6 line-clamp-3">{data.title}</div>
+            <div className="text-[20px] leading-[24px] font-bold min-h-[96px] mb-6 line-clamp-3">
+              {data.title}
+            </div>
           </Link>
           <div className="text-[14px] whitespace-pre">
             {data.place} {'\n'}

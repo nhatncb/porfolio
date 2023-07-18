@@ -14,31 +14,40 @@ const NewsContent = () => {
     config: { duration: 300 },
   });
   return (
-    <div className="flex flex-col h-full">
-      {transitions((style) => (
+    <animated.div className="flex flex-col h-full">
+      {transitions(() => (
         <animated.div
-          className="flex-1 px-12 py-16 overflow-auto grid grid-cols-2 gap-x-12 gap-y-16 justify-center content-center"
-          style={style}
+          className={`flex-1 p-12 overflow-auto grid grid-cols-2 gap-x-12 gap-y-16 justify-center ${
+            page === 1 ? 'content-center' : ''
+          }`}
+          // style={style}
         >
-          <NewItem />
-          <NewItem />
-          <NewItem />
-          <NewItem />
-          <NewItem />
-          <NewItem />
+          {page === 1 ? (
+            <>
+              <NewItem />
+              <NewItem />
+              <NewItem />
+              <NewItem />
+            </>
+          ) : (
+            <>
+              <NewItem />
+              <NewItem />
+            </>
+          )}
         </animated.div>
       ))}
       <div className="flex h-[72px] px-[48px] black-top-border justify-end items-center">
         <div className="flex gap-4">
-          <button onClick={() => setPage(page - 1)}>
+          <button disabled={page === 1} onClick={() => setPage(page - 1)}>
             <ArrowLeftIcon />
           </button>
-          <button onClick={() => setPage(page + 1)}>
+          <button disabled={page === 2} onClick={() => setPage(page + 1)}>
             <ArrowRightIcon />
           </button>
         </div>
       </div>
-    </div>
+    </animated.div>
   );
 };
 

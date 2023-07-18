@@ -30,7 +30,7 @@ const Writings = () => {
   return (
     <div className="h-screen bg-white flex flex-1">
       <div className="flex-1 flex flex-col">
-        <div className="header">
+        <div className="header h-[128px]">
           <p className="m-0 page-title">Writings</p>
         </div>
         <div className="flex flex-shrink-0 black-bottom-border h-[72px]">

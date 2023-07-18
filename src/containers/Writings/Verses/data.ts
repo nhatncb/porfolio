@@ -2,7 +2,7 @@ export const data = [
   {
     time: '2019',
     title: 'in(ter)',
-    author: 'Đỗ Nguyễn Lập Xuân',
+    author: 'Do Nguyen Lap Xuan',
     id: '1',
     verse1: `“ To hear
     rather than to see
@@ -17,7 +17,7 @@ export const data = [
   {
     time: '2019',
     title: 'why butterfly?',
-    author: 'Đỗ Nguyễn Lập Xuân',
+    author: 'Do Nguyen Lap Xuan',
     id: '2',
     verse1: `seeing
     a butterfly—
@@ -33,7 +33,7 @@ export const data = [
   {
     time: '2019',
     title: 'why on earth',
-    author: 'Đỗ Nguyễn Lập Xuân',
+    author: 'Do Nguyen Lap Xuan',
     id: '3',
     verse1: `“ To hear
     rather than to see
@@ -48,7 +48,7 @@ export const data = [
   {
     time: '2019',
     title: 'another real life',
-    author: 'Đỗ Nguyễn Lập Xuân',
+    author: 'Do Nguyen Lap Xuan',
     id: '4',
     verse1: `seeing
     a butterfly—

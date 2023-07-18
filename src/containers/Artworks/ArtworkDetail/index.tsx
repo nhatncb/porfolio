@@ -133,7 +133,7 @@ const ArtworkDetail = () => {
         <div className="bottom-0 w-full">
           <div className="flex">
             <div className="w-full flex items-center py-[27px] h-[127px] px-[48px] max-w-[648px] black-top-border">
-              <div className="text-[32px] font-bold w-full leading-9">{detail?.title}</div>
+              <div className="text-[28px] leading-8 font-bold w-full">{detail?.title}</div>
             </div>
             <div className="relative w-full">
               <animated.div
@@ -145,26 +145,26 @@ const ArtworkDetail = () => {
                 <div ref={ref}>
                   {showMore ? (
                     <>
-                      <div className={`leading-[18px] text-[12px]`}>{detail?.content}</div>
+                      <div className={`normal-text`}>{detail?.content}</div>
                       {renderTagSection()}
                     </>
                   ) : (
                     <TruncateMarkup ellipsis={readMoreEllipsis} lines={4}>
-                      <div className={`leading-[18px] text-[12px]`}>{detail?.content}</div>
+                      <div className={`normal-text`}>{detail?.content}</div>
                     </TruncateMarkup>
                   )}
                 </div>
               </animated.div>
             </div>
           </div>
-          <div className="flex py-[45px] px-[48px] black-top-border justify-between">
-            <div className="flex items-center">
+          <div className="flex py-[23.5px] px-[48px] black-top-border justify-between">
+            <div className="flex items-center svg-24 gap-3">
               <PlusIcon />
-              <div className="ml-2 text-[12px] font-bold leading-[18px] hover-underline">
-                view artwork list
+              <div className="text-[14px] font-bold leading-[18px] hover-underline">
+                artwork list
               </div>
             </div>
-            <div className="flex gap-6 items-center">
+            <div className="flex gap-8 items-center">
               <div className="flex align-middle text-[11px] leading-[16px] gap-1">
                 <div>material: bronze</div>
                 <div>|</div>

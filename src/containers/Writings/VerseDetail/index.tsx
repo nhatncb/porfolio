@@ -46,11 +46,11 @@ const VerseDetail = () => {
           {detail?.title}
         </div>
         <div className="flex py-6 px-[48px] justify-between">
-          <Link className="flex items-center" to="/writings/verses">
+          <Link className="flex items-center svg-24 gap-3" to="/writings/verses">
             <PlusIcon />
-            <div className="ml-2 text-[12px] font-bold leading-[18px]">verse list</div>
+            <div className="normal-text font-bold">verse list</div>
           </Link>
-          <div className="flex gap-6">
+          <div className="flex gap-8">
             <div className="text-[12px] flex gap-1">
               <div>HCMC, Vietnam</div>
               <div>|</div>

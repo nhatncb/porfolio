@@ -1,17 +1,15 @@
-import RightDownloadIcon from 'assets/icons/thin-right-download.svg';
+/* eslint-disable react/no-unescaped-entities */
+import RightDownloadIcon from 'assets/icons/right_download.svg';
 
 const ArtisticEducation = () => {
   return (
     <>
       <div className="content-container flex-1 overflow-auto">
         <div className="p-12 flex flex-col justify-between h-full">
-          <div className="flex justify-between">
-            <RightDownloadIcon />
+          <div className="flex justify-end">
             <div className="flex items-end flex-col">
-              <div className="text-[14px] font-bold">
-                Keywords: Performative Lecture, Artistic Education
-              </div>
-              <div className="grid grid-cols-[300px_300px] gap-6 mt-10 text-[14px]">
+              <div className="normal-text font-bold">by Do Nguyen Lap Xuan & Samira Jamouchi</div>
+              <div className="grid grid-cols-[300px_300px] gap-6 mt-10 normal-text">
                 <div className="max-w-[300px]">
                   This presentation is a (dis-)continuation of our on-going performative talk series
                   called: “When I think about you and…”.
@@ -26,13 +24,21 @@ const ArtisticEducation = () => {
             </div>
           </div>
           <div className="font-bold">
-            <div className="text-[32px]">While I&apos;m thinking about you, and...</div>
-            <div className="mt-3">A Collaboration on Performative Approach to Education</div>
+            <div className="title-text">While I'm thinking about you, and...</div>
+            <div className="flex items-center mt-2 justify-between">
+              <div className="text-[18px] leading-6">
+                A Collaboration on Performative Approach to Education
+              </div>
+              <div className="flex gap-3 svg-24 items-center">
+                <RightDownloadIcon />
+                <div className="normal-text">view more</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="flex py-[28px] px-[48px] black-top-border justify-end text-[12px] font-bold">
-        by Đỗ Nguyễn Lập Xuân & Samira Jamouchi
+      <div className="flex py-[28px] px-[48px] black-top-border justify-end text-[12px] leading-4">
+        Keywords: Performative Lecture, Artistic Education
       </div>
     </>
   );

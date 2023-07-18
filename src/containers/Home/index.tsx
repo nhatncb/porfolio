@@ -1,4 +1,4 @@
-import { animated, to, useSpring, useTransition } from '@react-spring/web';
+import { animated, useSpring, useTransition } from '@react-spring/web';
 import { useMove } from '@use-gesture/react';
 import useGlobalState from 'hooks/useGlobalState';
 import { useEffect } from 'react';
@@ -7,7 +7,7 @@ import helpers from 'utils/helpers';
 
 const HomePage = () => {
   const { bgIndex, setBgIndex } = useGlobalState();
-  const [props, api] = useSpring(() => ({
+  const [, api] = useSpring(() => ({
     xy: [0, 0],
     config: { mass: 10, tension: 550, friction: 140 },
   }));
@@ -41,7 +41,7 @@ const HomePage = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setBgIndex(1);
-    }, 3800);
+    }, 3000);
     return () => clearTimeout(timeout);
   }, [bgIndex, setBgIndex]);
 
@@ -56,12 +56,9 @@ const HomePage = () => {
               src={helpers.getAssetUrl(`/images/bg_home_${item}.png`)}
             />
             <animated.p
-              className="flex items-center justify-center text-[12px] text-[#ffffff] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#000000]/20 w-[98px] h-[40px] rounded-[4px]"
+              className="flex items-center justify-center text-[12px] leading-4 text-[#ffffff] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#000000]/20 w-[98px] h-[40px] rounded-[4px]"
               style={{
                 ...spring,
-                transform: to(props.xy, (x, y) => {
-                  return `translate3d(${x / 20}px,${y / 20}px,0)`;
-                }),
               }}
             >
               tap to explore

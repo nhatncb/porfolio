@@ -15,7 +15,7 @@ const NewItem = () => {
         </div>
       </div>
       <div className="info-container flex-1 ml-6">
-        <div className="font-extrabold text-lg">
+        <div className="font-bold line-clamp-2 text-[18px] leading-[24px]">
           NERA Conference - Roundtable Discussion: Parallel Session 4 - NW22 Roundtable Discussion
         </div>
         <div className="flex gap-2 mt-3">
