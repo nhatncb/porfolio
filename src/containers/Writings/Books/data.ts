@@ -23,8 +23,8 @@ export const data = [
     title: 'STATE YOUR PURPOSE:A Collaborative Banner Making Workshop Facilitated',
     author: 'by NAVA',
     image: '/images/book_2.png',
-    url1: 'amazon',
-    url2: 'routledge',
+    url1: 'vaabf',
+    url2: 'visualarts.net.au',
     id: '2',
     content: `About the book:
 

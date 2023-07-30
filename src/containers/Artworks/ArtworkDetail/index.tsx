@@ -1,4 +1,5 @@
 import { animated, useSpring, useSprings } from '@react-spring/web';
+import ArrowDownIcon from 'assets/icons/arrow-down.svg';
 import ArrowLeftIcon from 'assets/icons/arrow-left.svg';
 import ArrowRightIcon from 'assets/icons/arrow-right.svg';
 import PlusIcon from 'assets/icons/plus-circle.svg';
@@ -65,17 +66,20 @@ const ArtworkDetail = () => {
   };
   const renderTagSection = () => {
     return (
-      <div className="flex justify-between mt-[10px]">
+      <div className="flex justify-between mt-[8px]">
         <div
-          className="cursor-pointer leading-4 font-bold text-[12px]"
+          className="cursor-pointer font-medium normal-text flex gap-1"
           onClick={() => setShowMore(!showMore)}
         >
-          {!showMore ? 'read more' : 'show less'}
+          <div className={`ease-in ${!showMore ? '' : 'rotate-180'}`}>
+            <ArrowDownIcon />
+          </div>
+          {!showMore ? 'show more' : 'show less'}
         </div>
         <div className="flex gap-3">
           {detail?.tags.map((tag) => (
             <Link key={tag} to={`/artworks/${tag}`}>
-              <div className="text-[12px] leading-4 font-bold">#{tag}</div>
+              <div className="text-[12px] leading-4 font-medium">#{tag}</div>
             </Link>
           ))}
         </div>
@@ -133,7 +137,7 @@ const ArtworkDetail = () => {
         <div className="bottom-0 w-full">
           <div className="flex">
             <div className="w-full flex items-center py-[27px] h-[127px] px-[48px] max-w-[648px] black-top-border">
-              <div className="text-[28px] leading-8 font-bold w-full">{detail?.title}</div>
+              <div className="text-[28px] leading-8 font-semibold w-full">{detail?.title}</div>
             </div>
             <div className="relative w-full">
               <animated.div
@@ -158,14 +162,12 @@ const ArtworkDetail = () => {
             </div>
           </div>
           <div className="flex py-[23.5px] px-[48px] black-top-border justify-between">
-            <div className="flex items-center svg-24 gap-3">
+            <div className="flex items-center gap-[6px]">
               <PlusIcon />
-              <div className="text-[14px] font-bold leading-[18px] hover-underline">
-                artwork list
-              </div>
+              <div className="normal-text font-semibold hover-underline">artwork list</div>
             </div>
             <div className="flex gap-8 items-center">
-              <div className="flex align-middle text-[11px] leading-[16px] gap-1">
+              <div className="flex align-middle text-[12px] leading-[16px] gap-1">
                 <div>material: bronze</div>
                 <div>|</div>
                 <div>location: Sydney, Australia</div>

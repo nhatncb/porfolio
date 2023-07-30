@@ -19,21 +19,19 @@ const StatementContent = () => {
           <img alt="dnlx" height={412} src="/images/Profile.png" width={268} />
           <div className="mt-8">
             <div className="flex flex-col gap-[2px]">
-              <div className="text-[14px] leading-[18px]">
-                B: 1986, Ho Chi Minh City (HCMC), Vietnam
-              </div>
-              <div className="text-[14px] leading-[18px]">E: dnlapxuan@gmail.com</div>
-              <div className="text-[14px] leading-[18px]">T: +84909305100</div>
+              <div className="normal-text">B: 1986, Ho Chi Minh City (HCMC), Vietnam</div>
+              <div className="normal-text">E: dnlapxuan@gmail.com</div>
+              <div className="normal-text">T: +84909305100</div>
             </div>
           </div>
         </div>
       </div>
 
       <div className="flex-1 flex p-[24px] justify-center items-center">
-        <div className="max-w-[594px]">
+        <div className="max-w-[594px] translate-y-[-45px]">
           <div className="text-xl">
             <animated.span className="inline-block" style={{ ...springs[0] }}>
-              Do Nguyen Lap Xuan, aka Lap-Xuan Do-Nguyen, MA, is a recipient of the Scientia PhD
+              Đỗ Nguyễn Lập Xuân, aka Lap-Xuan Do-Nguyen, MA, is a recipient of the Scientia PhD
               scholarship at the University of New South Wales. She is an{' '}
               <animated.span className="inline-block font-bold" style={{ ...springs[1] }}>
                 artist & social practitioner

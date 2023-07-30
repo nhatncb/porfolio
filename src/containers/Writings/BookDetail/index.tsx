@@ -1,7 +1,7 @@
 import ArrowLeftIcon from 'assets/icons/arrow-left.svg';
 import ArrowRightIcon from 'assets/icons/arrow-right.svg';
+import BlackArrowRightIcon from 'assets/icons/black-arrow-right.svg';
 import PlusIcon from 'assets/icons/plus-circle.svg';
-import RightDownloadIcon from 'assets/icons/right_download.svg';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { data } from '../Books/data';
@@ -33,14 +33,14 @@ const BookDetail = () => {
   return (
     <div className="h-screen bg-white flex flex-col flex-1">
       <div className="px-12 py-8 black-bottom-border h-[136px] flex items-center">
-        <p className="m-0 title-text font-bold line-clamp-2">{detail?.title}</p>
+        <p className="m-0 title-text font-semibold line-clamp-2">{detail?.title}</p>
       </div>
       <div className="flex flex-1 overflow-hidden">
         <div className="black-right-border black-bottom-border flex flex-col flex-1">
-          <div className="py-[17px] px-12 black-bottom-border normal-text font-bold">
+          <div className="py-[18px] px-12 black-bottom-border normal-text font-medium">
             {detail?.author}
           </div>
-          <div className="p-16 whitespace-pre-line overflow-auto h-full">
+          <div className="p-16 whitespace-pre-line overflow-auto h-full flex flex-col justify-center">
             <span className="mx-auto max-w-[775px] block normal-text">{detail?.content}</span>
           </div>
         </div>
@@ -49,21 +49,21 @@ const BookDetail = () => {
             <img alt="" className="w-auto h-auto max-h-[100%] mx-auto" src={detail?.image} />
           </div>
           <div className="grid grid-cols-[50%_50%] black-top-border black-bottom-border">
-            <div className="flex gap-3 text-[12px] font-bold leading-[18px] w-full black-right-border items-center justify-center min-h-8 py-[17px] svg-24">
-              <RightDownloadIcon />
-              <div className="normal-text">amazon</div>
+            <div className="flex gap-1 text-[12px] leading-[18px] w-full black-right-border items-center justify-center min-h-8 py-[17px] svg-16">
+              <BlackArrowRightIcon />
+              <div className="normal-text font-medium">{detail?.url1}</div>
             </div>
-            <div className="flex gap-3 text-[12px] font-bold leading-[18px] w-full items-center justify-center min-h-8 py-[17px] svg-24">
-              <RightDownloadIcon />
-              <div className="normal-text">amazon</div>
+            <div className="flex gap-1 text-[12px] leading-[18px] w-full items-center justify-center min-h-8 py-[17px] svg-16">
+              <BlackArrowRightIcon />
+              <div className="normal-text font-medium">{detail?.url2}</div>
             </div>
           </div>
         </div>
       </div>
       <div className="flex-shrink-0 flex py-6 px-[48px] justify-between">
-        <Link className="flex items-center svg-24 gap-3" to="/writings/books">
+        <Link className="flex items-center gap-[6px]" to="/writings/books">
           <PlusIcon />
-          <div className="normal-text font-bold">book list</div>
+          <div className="normal-text font-medium">book list</div>
         </Link>
         <div className="flex gap-6 items-center">
           <div className="flex gap-4">

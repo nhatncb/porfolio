@@ -31,7 +31,7 @@ const VerseDetail = () => {
   return (
     <div className="h-screen bg-white flex flex-1">
       <div className="flex-1 flex flex-col">
-        <div className="flex-1 black-bottom-border px-[48px] grid-cols-12 grid-rows-6	grid gap-[24px] whitespace-pre-line">
+        <div className="text-[20px] leading-[26px] flex-1 black-bottom-border px-[48px] grid-cols-12 grid-rows-6	grid gap-[24px] whitespace-pre-line">
           <div className="row-start-2 col-start-2 col-span-2 relative">
             <span className="absolute top-0 left-0">{detail?.verse1}</span>
           </div>
@@ -42,16 +42,16 @@ const VerseDetail = () => {
             <span className="absolute top-0 left-0">{detail?.verse3}</span>
           </div>
         </div>
-        <div className="h-[127px] px-12 py-[25px] flex justify-end items-center black-bottom-border text-[32px] font-bold">
+        <div className="h-[100px] px-12 py-[25px] flex justify-end items-center black-bottom-border text-[32px] leading-[36px] font-semibold">
           {detail?.title}
         </div>
         <div className="flex py-6 px-[48px] justify-between">
-          <Link className="flex items-center svg-24 gap-3" to="/writings/verses">
+          <Link className="flex items-center gap-[6px]" to="/writings/verses">
             <PlusIcon />
-            <div className="normal-text font-bold">verse list</div>
+            <div className="normal-text font-medium">verse list</div>
           </Link>
           <div className="flex gap-8">
-            <div className="text-[12px] flex gap-1">
+            <div className="text-[12px] leading-[16px] flex gap-1">
               <div>HCMC, Vietnam</div>
               <div>|</div>
               <div>2019</div>

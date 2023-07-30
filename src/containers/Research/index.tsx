@@ -24,11 +24,11 @@ const Research = () => {
   return (
     <div className="h-screen bg-white flex flex-1">
       <div className="flex-1 flex flex-col">
-        <div className="header h-[128px]">
+        <div className="header h-[104px]">
           <p className="m-0 page-title">Research</p>
         </div>
         <div className="black-bottom-border">
-          <div className="px-[48px] py-[18px] flex-1 black-right-border gap-2 flex">
+          <div className="px-[48px] py-[18px] flex-1 gap-4 flex">
             {springs.map((props, index) => (
               <Link key={MENUS[index]?.to} to={MENUS[index]?.to || ''}>
                 <animated.button

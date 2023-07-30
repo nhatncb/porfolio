@@ -44,11 +44,11 @@ const Artworks = () => {
   return (
     <div className="h-screen bg-white flex">
       <div className="flex-1 flex flex-col">
-        <div className="header h-[128px]">
+        <div className="header h-[104px]">
           <p className="m-0 page-title">Artworks</p>
         </div>
         <div className="flex flex-shrink-0 black-bottom-border h-[72px]">
-          <div className="flex flex-auto px-[48px] gap-3 black-right-border items-center">
+          <div className="flex flex-auto px-[48px] gap-4 black-right-border items-center">
             {springs.map((props, index) => (
               <Link key={MENUS[index]?.to} to={MENUS[index]?.to || ''}>
                 <animated.button
@@ -60,7 +60,7 @@ const Artworks = () => {
               </Link>
             ))}
           </div>
-          <div className="basis-[156px] flex justify-center items-center gap-[12px]">
+          <div className="basis-[160px] flex justify-center items-center gap-[12px]">
             <button>
               <ArrowLeftIcon />
             </button>

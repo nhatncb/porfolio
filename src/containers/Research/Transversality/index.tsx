@@ -1,14 +1,16 @@
-import RightDownloadIcon from 'assets/icons/right_download.svg';
+import RigtIcon from 'assets/icons/black-arrow-right.svg';
 
 const Transversality = () => {
   return (
     <>
       <div className="content-container flex-1 overflow-auto">
-        <div className="p-12 flex flex-col justify-between h-full">
+        <div className="p-10 flex flex-col justify-between h-full">
           <div className="flex justify-end">
             <div className="flex items-end flex-col">
-              <div className="normal-text font-bold">by Do Nguyen Lap Xuan</div>
-              <div className="grid grid-cols-[300px_300px_300px] gap-6 mt-10 normal-text">
+              <div className="normal-text font-medium">
+                Keywords: Encounter, Transversality, Emergent, Performative, Voice
+              </div>
+              <div className="grid grid-cols-[300px_300px_300px] gap-6 mt-6 normal-text">
                 <div className="max-w-[300px]">
                   This arts-based research (ABR) investigates the diverse properties of voice that
                   emerged from artistic representations. ‘Voice’ in this context is used as a
@@ -38,22 +40,22 @@ const Transversality = () => {
               </div>
             </div>
           </div>
-          <div className="font-bold">
-            <div className="title-text">The Transversality of Voice</div>
+          <div>
+            <div className="title-text font-semibold">The Transversality of Voice</div>
             <div className="flex items-center mt-2 justify-between">
-              <div className="text-[18px] leading-6">
+              <div className="text-[18px] leading-6 font-medium">
                 A thesis in fulfilment of the requirements for the degree of Doctor of Philosophy
-              </div>
-              <div className="flex gap-3 svg-24 items-center">
-                <RightDownloadIcon />
-                <div className="normal-text">view more</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex py-[28px] px-[48px] black-top-border justify-end text-[12px] leading-4">
-        Keywords: Encounter, Transversality, Emergent, Performative, Voice
+      <div className="flex h-[72px] normal-text font-medium px-[48px] black-top-border text-[12px] leading-4 justify-between items-center">
+        by Đỗ Nguyễn Lập Xuân
+        <div className="flex gap-3 svg-24 items-center svg-16">
+          <RigtIcon />
+          <div className="normal-text">view full</div>
+        </div>
       </div>
     </>
   );

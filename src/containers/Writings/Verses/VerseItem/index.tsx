@@ -11,11 +11,11 @@ const VerseItem = ({
       to={`/writings/verses/${data.id}`}
     >
       <div className="flex gap-6 items-end">
-        <div className="text-[14px] leading-[18px] min-w-[84px]">{data.time}</div>
-        <div className="text-[20px] font-bold leading-[24px]">{data.title}</div>
+        <div className="normal-text min-w-[84px]">{data.time}</div>
+        <div className="text-[20px] font-semibold leading-[24px]">{data.title}</div>
       </div>
       <div>
-        <div className="text-[14px] leading-[18px] ">{data.author}</div>
+        <div className="normal-text ">{data.author}</div>
       </div>
     </Link>
   );

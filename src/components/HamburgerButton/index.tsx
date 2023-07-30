@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const aboutMeMenus = [
   {
-    title: 'Do Nguyen Lap Xuan',
+    title: 'Đỗ Nguyễn Lập Xuân',
     url: '/statement',
   },
   {
@@ -128,7 +128,9 @@ const HamburgetButton = () => {
               return (
                 <div className="mb-10" key={category.title}>
                   <div
-                    className={`section-title mb-3 ${isActiveTitle ? 'font-bold' : 'blur-text'}`}
+                    className={`section-title mb-3 ${
+                      isActiveTitle ? 'font-semibold' : 'blur-text'
+                    }`}
                   >
                     {category.title}
                   </div>
@@ -137,8 +139,8 @@ const HamburgetButton = () => {
                     return (
                       <Link
                         className={`${
-                          isActivePath ? 'font-bold' : 'blur-text'
-                        } text-lg mb-2 block leading-[24px]`}
+                          isActivePath ? 'font-normal' : 'blur-text'
+                        } text-[16px] mb-2 block leading-[22px]`}
                         key={subMenu.title}
                         onClick={() => setDrawer(false)}
                         to={subMenu.url}

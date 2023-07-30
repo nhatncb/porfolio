@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Gowun Batang';
+  font-family: 'AndadaPro';
   font-style: normal;
   font-weight: normal;
   font-display: swap;
-  src: local('Gowun Batang'), url(@/assets/fonts/GowunBatang-Regular.ttf) format('truetype');
+  src: local('AndadaPro'), url(@/assets/fonts/AndadaPro-Regular.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Gowun Batang';
+  font-family: 'AndadaPro';
   font-style: normal;
   font-weight: bold;
   font-display: swap;
-  src: local('Gowun Batang'), url(@/assets/fonts/GowunBatang-Bold.ttf) format('truetype');
+  src: local('AndadaPro'), url(@/assets/fonts/AndadaPro-Bold.ttf) format('truetype');
 }
 
 *, *:before, *:after {
@@ -34,7 +34,7 @@ a {
 
 body {
   margin: 0px;
-  font-family: "Gowun Batang";
+  font-family: 'Andada Pro', serif;
   color: #000;
   max-height: 100vh;
   max-width: 100vw;
@@ -46,15 +46,14 @@ li.ant-menu-item.ant-menu-item-only-child.ant-pro-base-menu-menu-item:not(.ant-m
 
 @layer components {
   .page-title {
-    @apply text-[40px] leading-[44px] font-bold
+    @apply text-[40px] leading-[40px] font-semibold
   }
 }
 
 .section-title {
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 36px;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
 }
 
 .blur-text {
@@ -69,7 +68,7 @@ li.ant-menu-item.ant-menu-item-only-child.ant-pro-base-menu-menu-item:not(.ant-m
   cursor: pointer;
   font-size: 14px;
   line-height: 18px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .text-btn {
@@ -79,7 +78,7 @@ li.ant-menu-item.ant-menu-item-only-child.ant-pro-base-menu-menu-item:not(.ant-m
   cursor: pointer;
   font-size: 14px;
   line-height: 18px;
-  font-weight: bold;
+  font-weight: 500;
   border: 0.5px solid transparent;
 }
 .header {
@@ -116,17 +115,19 @@ li.ant-menu-item.ant-menu-item-only-child.ant-pro-base-menu-menu-item:not(.ant-m
 }
 
 .circle-logo {
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   border: 1px solid #000;
   border-radius: 50%;
   position: relative;
 }
 
 .circle-logo:after {
-  content: 'Đ';
+  content: 'd';
   position: absolute;
-  left: 8px;
+  left: 12px;
+  top: 5px;
+  font-weight: 500;
 }
 
 .typewriter {
@@ -143,7 +144,7 @@ li.ant-menu-item.ant-menu-item-only-child.ant-pro-base-menu-menu-item:not(.ant-m
 /* The typing effect */
 @keyframes typing {
   0%, 10% { height: 0 }
-  60%, 100% { height: 160px }
+  60%, 100% { height: 140px }
 }
 
 /* The typewriter cursor effect */
@@ -183,5 +184,12 @@ li.ant-menu-item.ant-menu-item-only-child.ant-pro-base-menu-menu-item:not(.ant-m
   svg {
     width: 24px;
     height: 24px;
+  }
+}
+
+.svg-16 {
+  svg {
+    width: 16px;
+    height: 16px;
   }
 }

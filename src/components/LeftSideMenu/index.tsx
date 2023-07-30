@@ -31,8 +31,8 @@ const LeftSideMenu = () => {
   const renderMiddleSection = () => {
     if (!drawer && location.pathname === '/') {
       return (
-        <div className="[writing-mode:vertical-lr] typewriter rotate-180 font-bold">
-          Do Nguyen Lap Xuan
+        <div className="[writing-mode:vertical-lr] typewriter rotate-180 font-medium">
+          donguyenlapxuan
         </div>
       );
     }

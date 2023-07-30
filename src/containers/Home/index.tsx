@@ -56,7 +56,7 @@ const HomePage = () => {
               src={helpers.getAssetUrl(`/images/bg_home_${item}.png`)}
             />
             <animated.p
-              className="flex items-center justify-center text-[12px] leading-4 text-[#ffffff] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#000000]/20 w-[98px] h-[40px] rounded-[4px]"
+              className="flex items-center justify-center normal-text leading-4 text-[#ffffff] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#000000]/20 w-[114px] h-[40px] rounded-[4px]"
               style={{
                 ...spring,
               }}
