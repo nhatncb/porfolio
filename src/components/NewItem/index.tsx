@@ -6,10 +6,10 @@ const NewItem = () => {
   return (
     <div className="flex">
       <div
-        className="flex flex-col rounded-lg data-container black-border w-[124px] h-[124px]"
+        className="flex flex-col rounded-lg data-container black-border w-[124px] h-[124px] overflow-hidden "
         style={{ border: '1px solid #000' }}
       >
-        <div className="year-container normal-text text-white text-center bg-[black] py-[5px] px-[10px] rounded-tr-lg rounded-tl-lg font-medium">
+        <div className="year-container normal-text text-white text-center bg-[black] py-[5px] px-[10px] font-medium">
           2023
         </div>
         <div className="flex-1">
