@@ -24,7 +24,7 @@ export default defineConfig({
       libList: [
         {
           libName: "antd",
-          style: (name) => `antd/es/${name}/style`,
+          style: (name) => name !== 'time-picker' && `antd/es/${name}/style`,
         },
       ],
     }),

@@ -1,5 +1,4 @@
 import { Form, TimePicker } from 'antd';
-import type { RangePickerProps } from 'antd/es/date-picker';
 import dayjs from 'dayjs';
 import type { Control, FieldValues, Path } from 'react-hook-form';
 import { useController } from 'react-hook-form';
@@ -21,7 +20,7 @@ const TimeRangeInput = <TFormValues extends FieldValues>({
   control,
   required,
   ...props
-}: TimePickerFieldProps<TFormValues> & RangePickerProps) => {
+}: TimePickerFieldProps<TFormValues> & any) => {
   const {
     field: { value, onChange, ...otherFields },
     fieldState: { error },
@@ -30,7 +29,7 @@ const TimeRangeInput = <TFormValues extends FieldValues>({
     control,
   });
 
-  const handleOnChange: RangePickerProps['onChange'] = (rangeValue) => {
+  const handleOnChange = (rangeValue: any) => {
     onChange(rangeValue ? [rangeValue[0]?.toISOString(), rangeValue[1]?.toISOString()] : null);
   };
 
