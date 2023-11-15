@@ -3,13 +3,15 @@ import ArrowDownIcon from 'assets/icons/arrow-down.svg';
 import ArrowLeftIcon from 'assets/icons/arrow-left.svg';
 import ArrowRightIcon from 'assets/icons/arrow-right.svg';
 import PlusIcon from 'assets/icons/plus-circle.svg';
+import dayjs from 'dayjs';
+import useFetch from 'hooks/useFetch';
+import useList from 'hooks/useList';
+import type { IArtworkItem } from 'models/artwork/types';
 import { useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { useNavigate, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import TruncateMarkup from 'react-truncate-markup';
-
-import { data } from '../data';
 
 function useFirstRender() {
   const ref = useRef(true);
@@ -21,15 +23,19 @@ function useFirstRender() {
 const ArtworkDetail = () => {
   const isFirstRender = useFirstRender();
   const ref = useRef<HTMLDivElement>(null);
-  const { id, type = '' } = useParams();
-  const detail = data.find((item) => item.id === id);
-  const list = data.filter((item) => item.tags.includes(type));
-  const arts = detail?.arts || [];
+  const { id = '', type = '' } = useParams();
+  const { data: detail } = useFetch<IArtworkItem>({
+    queryKey: ['artworks', id],
+    collectionName: 'artworks',
+    id,
+  });
+  const { list } = useList<IArtworkItem>({ collectionName: 'artworks', staleTime: Infinity });
+  const images = detail?.images || [];
   const navigate = useNavigate();
   const [activeArt, setActiveArt] = useState(0);
   const [showMore, setShowMore] = useState(false);
   const [springs] = useSprings(
-    arts.length,
+    images.length,
     (index) => ({
       borderColor: index === activeArt ? '#000' : 'transparent',
       opacity: index === activeArt ? 1 : 0,
@@ -77,9 +83,9 @@ const ArtworkDetail = () => {
           {!showMore ? 'show more' : 'show less'}
         </div>
         <div className="flex gap-3">
-          {detail?.tags.map((tag) => (
+          {detail?.tag.map((tag) => (
             <Link key={tag} to={`/artworks/${tag}`}>
-              <div className="text-[12px] leading-4 font-medium">#{tag}</div>
+              <div className="text-[12px] leading-4 font-medium">#{tag.toLowerCase()}</div>
             </Link>
           ))}
         </div>
@@ -97,25 +103,30 @@ const ArtworkDetail = () => {
     <div className="h-screen bg-white flex flex-1">
       <div className="flex flex-col justify-between w-full">
         <div
-          className={`flex ${arts.length > 1 ? 'py-16 px-12 pr-0' : 'p-0 flex-1'} overflow-hidden`}
+          className={`flex ${
+            images.length > 1 ? 'py-16 px-12 pr-0' : 'p-0 flex-1'
+          } overflow-hidden`}
         >
-          <animated.div
-            className="flex-1"
-            key={activeArt}
-            style={{
-              opacity: springs[activeArt]?.opacity,
-            }}
-          >
-            {arts[activeArt]?.type === 'image' ? (
-              <img alt="" className="w-full h-full object-cover" src={arts[activeArt]?.url} />
-            ) : (
-              <ReactPlayer height="100%" url={arts[activeArt]?.url} width="calc(100vw - 71px)" />
-            )}
-          </animated.div>
-          {arts.length > 1 && (
+          {detail?.type === 'IMAGES' && detail.images && (
+            <animated.div
+              className="flex-1"
+              key={activeArt}
+              style={{
+                opacity: springs[activeArt]?.opacity,
+              }}
+            >
+              {images[activeArt] && (
+                <img alt="" className="w-full h-full object-cover" src={images[activeArt]?.url} />
+              )}
+            </animated.div>
+          )}
+          {detail?.type === 'VIDEO' && (
+            <ReactPlayer height="100%" url={detail.videoUrl} width="calc(100vw - 71px)" />
+          )}
+          {images.length > 1 && (
             <div className="flex flex-col pr-12 overflow-auto ml-[90px]">
               {springs.map((style, index) => {
-                if (arts[index]?.type === 'image') {
+                if (images[index]) {
                   return (
                     <animated.img
                       alt=""
@@ -123,7 +134,7 @@ const ArtworkDetail = () => {
                       height={132}
                       key={index}
                       onClick={() => setActiveArt(index)}
-                      src={arts[index]?.url}
+                      src={images[index]?.url}
                       style={{ borderColor: style.borderColor }}
                       width={212}
                     />
@@ -137,7 +148,7 @@ const ArtworkDetail = () => {
         <div className="bottom-0 w-full">
           <div className="flex">
             <div className="w-full flex items-center py-[27px] h-[127px] px-[48px] max-w-[648px] black-top-border">
-              <div className="text-[28px] leading-8 font-semibold w-full">{detail?.title}</div>
+              <div className="text-[28px] leading-8 font-semibold w-full">{detail?.name}</div>
             </div>
             <div className="relative w-full">
               <animated.div
@@ -168,11 +179,11 @@ const ArtworkDetail = () => {
             </div>
             <div className="flex gap-8 items-center">
               <div className="flex align-middle text-[12px] leading-[16px] gap-1">
-                <div>material: bronze</div>
+                <div>material: {detail?.material}</div>
                 <div>|</div>
-                <div>location: Sydney, Australia</div>
+                <div>location: {detail?.place}</div>
                 <div>|</div>
-                <div>year: 2015</div>
+                <div>year: {detail?.time && dayjs(detail?.time).format('YYYY')}</div>
               </div>
               <div className="flex gap-4">
                 <button onClick={() => handleNavigate()}>

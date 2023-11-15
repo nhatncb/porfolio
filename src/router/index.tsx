@@ -1,9 +1,11 @@
+import type { Route } from '@ant-design/pro-layout/es/typing';
 import Root from 'containers';
 import AboutPage from 'containers/About';
 import Artworks from 'containers/Artworks';
 import ArtworkDetail from 'containers/Artworks/ArtworkDetail';
 import Performance from 'containers/Artworks/ArtworkList';
 import Home from 'containers/Home';
+import PageLayout from 'containers/Layout';
 import Research from 'containers/Research';
 import ArtisticEducation from 'containers/Research/ArtisticEducation';
 import Transversality from 'containers/Research/Transversality';
@@ -16,12 +18,19 @@ import type { RouteObject } from 'react-router';
 import { Navigate } from 'react-router';
 import { createBrowserRouter } from 'react-router-dom';
 
-import type { AntRoute } from './types';
+import adminRoutes from './adminRoutes';
+import Auth0ProviderLoader from './Auth0ProviderLoader';
+import { AuthenticationGuard } from './AuthenticationGuard';
+import type { RouteItem } from './types';
 
 export const indexRoutes: RouteObject[] = [
   {
     path: '/',
-    element: <Root />,
+    element: (
+      <Auth0ProviderLoader>
+        <Root />
+      </Auth0ProviderLoader>
+    ),
     children: [
       {
         path: '',
@@ -82,20 +91,25 @@ export const indexRoutes: RouteObject[] = [
           },
         ],
       },
+      {
+        path: 'admin',
+        // errorElement: <NotFoundPage />,
+        element: <AuthenticationGuard component={PageLayout} />,
+        children: adminRoutes,
+      },
       { path: '*', element: <Navigate replace to="/" /> },
     ],
   },
 ];
 
-const routes = indexRoutes;
-
-export const convertToMenuRoutes = (routeArr: (RouteObject & AntRoute)[]): AntRoute[] => {
+export const convertToMenuRoutes = (routeArr: RouteItem[]): Route[] => {
   return routeArr.map((route) => ({
     ...route,
+    path: `/admin/${route.path}`,
     ...(Array.isArray(route.children) ? { routes: convertToMenuRoutes(route.children) } : {}),
   }));
 };
 
-export default routes;
+export const sideMenuRoutes = convertToMenuRoutes(adminRoutes);
 
-export const router = createBrowserRouter(routes);
+export const router = createBrowserRouter(indexRoutes);

@@ -1,13 +1,17 @@
 import type { RouteObject } from 'react-router-dom';
 
-export interface AntRoute {
-  exact?: boolean;
-  icon?: any;
+export type AntRoute = {
+  hideChildrenInMenu?: boolean;
+  hideInMenu?: boolean;
+  icon?: React.ReactNode;
+  locale?: string | false;
   name?: string;
+  key?: string;
+  disabled?: boolean;
+  path?: string;
+  parentKeys?: string[];
   flatMenu?: boolean;
-  path: string;
-  // Optional secondary menu
-  children?: AntRoute[];
-  menu?: boolean;
-}
-export type RouteItem = RouteObject & Omit<AntRoute, 'chilren'>;
+  target?: string;
+};
+
+export type RouteItem = RouteObject & AntRoute & { children?: RouteItem[] };

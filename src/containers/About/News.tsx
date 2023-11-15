@@ -1,8 +1,9 @@
 import { animated, useTransition } from '@react-spring/web';
 import NewItem from 'components/NewItem';
+import type { INewsItem } from 'models/news/types';
 import React from 'react';
 
-const NewsContent = ({ data, page }: { data: any[]; page: number }) => {
+const NewsContent = ({ data, page }: { data: INewsItem[]; page: number }) => {
   const transitions = useTransition(page, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -17,8 +18,8 @@ const NewsContent = ({ data, page }: { data: any[]; page: number }) => {
           style={style}
         >
           <>
-            {data.map((_, index) => (
-              <NewItem key={index} />
+            {data.map((item, index) => (
+              <NewItem data={item} key={index} />
             ))}
           </>
         </animated.div>

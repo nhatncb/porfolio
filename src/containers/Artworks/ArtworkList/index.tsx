@@ -1,4 +1,6 @@
-import { data } from '../data';
+import useList from 'hooks/useList';
+import type { IArtworkItem } from 'models/artwork/types';
+
 import ArtworkItem from './ArtworkItem';
 
 const ArtworkList = ({
@@ -6,11 +8,12 @@ const ArtworkList = ({
 }: {
   type?: 'performance' | 'sculpture' | 'installation' | 'collaboration' | 'video' | 'others';
 }) => {
-  const list = data.filter((item) => item.tags.includes(type)).slice(0, 4);
+  const { list: data } = useList<IArtworkItem>({ collectionName: 'artworks', staleTime: Infinity });
+  const list = data.filter((item) => item.tag.includes(type.toUpperCase())).slice(0, 4);
   return (
     <>
       {list.map((artwork, index) => (
-        <ArtworkItem activeType={type} data={artwork} key={index} />
+        <ArtworkItem activeType={type} data={artwork || {}} key={index} />
       ))}
     </>
   );

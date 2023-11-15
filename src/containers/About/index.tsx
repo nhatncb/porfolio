@@ -2,11 +2,12 @@ import { animated, useSprings } from '@react-spring/web';
 import ArrowLeftIcon from 'assets/icons/arrow-left.svg';
 import ArrowRightIcon from 'assets/icons/arrow-right.svg';
 import DownloadIcon from 'assets/icons/download.svg';
+import useList from 'hooks/useList';
+import type { INewsItem } from 'models/news/types';
 import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 
-import { data } from './data';
 import NewsContent from './News';
 import StatementContent from './Statement';
 
@@ -24,6 +25,7 @@ const MENUS = [
 const AboutPage = () => {
   const location = useLocation();
   const [page, setPage] = useState(1);
+  const { list: data } = useList<INewsItem>({ collectionName: 'news', staleTime: Infinity });
   const news = data.slice(page === 1 ? (page - 1) * 8 : (page - 1) * 8 - 1, page - 1 + 8);
   const renderContent = (path: string) => {
     if (path === '/statement') {

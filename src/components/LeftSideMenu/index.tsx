@@ -8,7 +8,9 @@ import { Link } from 'react-router-dom';
 const LeftSideMenu = () => {
   const location = useLocation();
   const { drawer, setDrawer, setBgIndex } = useGlobalState();
-
+  if (location.pathname.startsWith('/admin')) {
+    return <Outlet />;
+  }
   const renderTopSection = () => {
     if (drawer || location.pathname !== '/') {
       return <Link className="circle-logo" onClick={() => setDrawer(false)} to="/" />;
