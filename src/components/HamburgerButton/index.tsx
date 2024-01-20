@@ -4,17 +4,6 @@ import { animated, to, useSpring } from '@react-spring/web';
 import useGlobalState from 'hooks/useGlobalState';
 import { Link, useLocation } from 'react-router-dom';
 
-const aboutMeMenus = [
-  {
-    title: 'Đỗ Nguyễn Lập Xuân',
-    url: '/statement',
-  },
-  {
-    title: 'News',
-    url: '/news',
-  },
-];
-
 const artWorkMenus = [
   {
     title: 'Performance',
@@ -69,7 +58,6 @@ const researchMenus = [
 ];
 
 const categories = [
-  { title: 'About Me', menus: aboutMeMenus, activeKeys: aboutMeMenus.map((menu) => menu.url) },
   { title: 'Artworks', menus: artWorkMenus, activeKeys: artWorkMenus.map((menu) => menu.url) },
   { title: 'Writings', menus: writingMenus, activeKeys: writingMenus.map((menu) => menu.url) },
   { title: 'Research', menus: researchMenus, activeKeys: researchMenus.map((menu) => menu.url) },

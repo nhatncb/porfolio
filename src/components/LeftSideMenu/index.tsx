@@ -1,51 +1,33 @@
-import ArrowLeftIcon from 'assets/icons/arrow-left.svg';
-import ArrowRightIcon from 'assets/icons/arrow-right.svg';
+import InfoIcon from 'assets/icons/info.svg';
+import SignatureIcon from 'assets/icons/signature1.svg';
 import HamburgetButton from 'components/HamburgerButton';
-import useGlobalState from 'hooks/useGlobalState';
 import { Outlet, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 
 const LeftSideMenu = () => {
   const location = useLocation();
-  const { drawer, setDrawer, setBgIndex } = useGlobalState();
   if (location.pathname.startsWith('/admin')) {
     return <Outlet />;
   }
   const renderTopSection = () => {
-    if (drawer || location.pathname !== '/') {
-      return <Link className="circle-logo" onClick={() => setDrawer(false)} to="/" />;
-    }
-    if (location.pathname === '/') {
-      return (
-        <div className="flex flex-col gap-4">
-          <button className="rotate-90" onClick={() => setBgIndex(-1)}>
-            <ArrowLeftIcon />
-          </button>
-          <button className="rotate-90" onClick={() => setBgIndex(1)}>
-            <ArrowRightIcon />
-          </button>
-        </div>
-      );
-    }
-    return <div />;
+    return <HamburgetButton />;
   };
 
   const renderMiddleSection = () => {
-    if (!drawer && location.pathname === '/') {
-      return (
-        <div className="[writing-mode:vertical-lr] typewriter rotate-180 font-medium">
-          donguyenlapxuan
-        </div>
-      );
-    }
-    return <div />;
+    return (
+      <Link className="cursor-pointer" to="/">
+        <SignatureIcon />
+      </Link>
+    );
   };
   return (
     <div className="h-screen bg-white flex art-picture-page">
       <div className="black-right-border py-[24px] h-screen w-[72px] flex-shrink-0 flex flex-col items-center justify-between">
         {renderTopSection()}
         {renderMiddleSection()}
-        <HamburgetButton />
+        <Link className="cursor-pointer" to="/statement">
+          <InfoIcon />
+        </Link>
       </div>
       <Outlet />
     </div>
