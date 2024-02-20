@@ -173,10 +173,10 @@ const ArtworkDetail = () => {
             </div>
           </div>
           <div className="flex py-[23.5px] px-[48px] black-top-border justify-between">
-            <div className="flex items-center gap-[6px]">
+            <Link className="flex items-center gap-[6px]" to={`/artworks/${type}`}>
               <PlusIcon />
               <div className="normal-text font-semibold hover-underline">artwork list</div>
-            </div>
+            </Link>
             <div className="flex gap-8 items-center">
               <div className="flex align-middle text-[12px] leading-[16px] gap-1">
                 <div>material: {detail?.material}</div>

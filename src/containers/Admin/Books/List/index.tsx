@@ -37,7 +37,7 @@ const AdminBookList = () => {
           onClick={() => navigate(`${pathname}/${id}`)}
           size="small"
         >
-          詳細
+          Edit
         </Button>
       ),
     },
