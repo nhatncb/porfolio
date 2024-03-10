@@ -1,23 +1,30 @@
 /* eslint-disable react/no-unescaped-entities */
-import RigtIcon from 'assets/icons/black-arrow-right.svg';
-import type { ArtisticEducationFormSchema } from 'containers/Admin/Research/ResearchContentEdit/schema';
+import { PageContainer } from '@ant-design/pro-layout';
+import { Button } from 'antd';
 import useFetch from 'hooks/useFetch';
+import { Link } from 'react-router-dom';
+
+import type { ArtisticEducationFormSchema } from '../ResearchContentEdit/schema';
 
 const gridClassName = {
   1: 'grid-cols-[300px]',
   2: 'grid-cols-[300px_300px]',
   3: 'grid-cols-[300px_300px_300px]',
 } as const;
-
-const ArtisticEducation = () => {
+const ResearchDetail = ({ id }: { id: string }) => {
   const { data } = useFetch<ArtisticEducationFormSchema>({
-    queryKey: ['research', 'transversality'],
+    queryKey: ['research', id],
     collectionName: 'research',
-    id: 'transversality',
+    id,
   });
   return (
-    <>
+    <PageContainer className="bg-white mt-4">
       <div className="content-container flex-1 overflow-auto">
+        <div className="flex justify-end">
+          <Link to={`/admin/research/${id}/edit`}>
+            <Button type="primary">Edit</Button>
+          </Link>
+        </div>
         <div className="p-10 flex flex-col justify-between h-full">
           <div className="flex justify-end">
             <div className="flex items-end flex-col">
@@ -27,7 +34,7 @@ const ArtisticEducation = () => {
                   gridClassName[(data?.content?.length as never) || 1]
                 } gap-6 mt-6 normal-text`}
               >
-                {(data?.content || []).map((item, index) => (
+                {data?.content?.map((item, index) => (
                   <div className="max-w-[300px]" key={index}>
                     {item.data}
                   </div>
@@ -45,13 +52,10 @@ const ArtisticEducation = () => {
       </div>
       <div className="flex h-[72px] font-medium normal-text px-[48px] black-top-border normal-text leading-4 justify-between items-center">
         by {data?.author}
-        <div className="flex gap-3 svg-24 items-center svg-16">
-          <RigtIcon />
-          <div className="normal-text">view full</div>
-        </div>
+        <div className="flex gap-3 svg-24 items-center svg-16"></div>
       </div>
-    </>
+    </PageContainer>
   );
 };
 
-export default ArtisticEducation;
+export default ResearchDetail;

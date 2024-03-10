@@ -3,6 +3,9 @@ import { ProLayout } from '@ant-design/pro-layout';
 import { useAuth0 } from '@auth0/auth0-react';
 import type { MenuProps } from 'antd';
 import { Dropdown, Modal, Spin, Typography } from 'antd';
+import type { ArtisticEducationFormSchema } from 'containers/Admin/Research/ResearchContentEdit/schema';
+import type { StatementFormSchema } from 'containers/Admin/Statement/Edit/schema';
+import useFetch from 'hooks/useFetch';
 // import SwitchLang from 'components/SwitchLang';
 import { get } from 'lodash';
 import useLogout from 'models/auth/useLogout';
@@ -16,7 +19,22 @@ const PageLayout = () => {
   const { logout, context } = useLogout();
   // const { t } = useTranslation();
   const { pathname } = useLocation();
-
+  useFetch<StatementFormSchema>({
+    queryKey: ['statement', 'main'],
+    collectionName: 'statement',
+    id: 'main',
+    staleTime: Infinity,
+  });
+  useFetch<ArtisticEducationFormSchema>({
+    queryKey: ['research', 'transversality'],
+    collectionName: 'research',
+    id: 'transversality',
+  });
+  useFetch<ArtisticEducationFormSchema>({
+    queryKey: ['research', 'artistic-education'],
+    collectionName: 'research',
+    id: 'artistic-education',
+  });
   useEffect(() => {
     document.body.style.overflowY = 'unset';
     document.body.style.maxHeight = 'unset';
