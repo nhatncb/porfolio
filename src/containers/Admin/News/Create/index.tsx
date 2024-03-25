@@ -2,6 +2,7 @@ import { PageContainer } from '@ant-design/pro-layout';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form } from 'antd';
 import DateInput from 'components/Form/DateInput';
+import TextAreaInput from 'components/Form/TextAreaInput';
 import TextInput from 'components/Form/TextInput';
 import TimeRangeInput from 'components/Form/TimeRangeInput';
 import type { FieldValue } from 'firebase/firestore';
@@ -29,7 +30,9 @@ const AdminNewsCreate = () => {
       name: '',
       place: '',
       time: [],
-      date: '',
+      startDate: '',
+      endDate: '',
+      description: '',
     },
   });
 
@@ -46,8 +49,12 @@ const AdminNewsCreate = () => {
         <Form layout="vertical" onFinish={handleSubmit(handleCreateNews)}>
           <TextInput control={control} label="Name" name="name" required />
           <TextInput control={control} label="Place" name="place" required />
-          <DateInput control={control} label="Date" name="date" required />
+          <div className="flex gap-4">
+            <DateInput control={control} label="Start Date" name="startDate" />
+            <DateInput control={control} label="End Date" name="endDate" />
+          </div>
           <TimeRangeInput control={control} label="Time" name="time" required />
+          <TextAreaInput control={control} label="Description" name="description" rows={5} />
           <div className="flex justify-end">
             <Button htmlType="submit" loading={isCreating} type="primary">
               Save

@@ -32,7 +32,7 @@ const BookItem = ({ data }: { data: IBookItem }) => {
         </div>
         <div className="px-12 mt-10">
           <Link to={`/writings/books/${data.id}`}>
-            <img alt="" className="mx-auto h-auto" src={data.imageUrl} />
+            <img alt="" className="mx-auto h-auto" src={data.imageUrl.url} />
           </Link>
         </div>
       </div>

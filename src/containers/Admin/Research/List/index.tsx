@@ -2,42 +2,37 @@ import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns } from '@ant-design/pro-table';
 import { Button } from 'antd';
 import CustomTable from 'components/CustomTable';
-import dayjs from 'dayjs';
 import useList from 'hooks/useList';
-import type { INewsItem } from 'models/news/types';
+import type { IResearchItem } from 'models/research/types';
 import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
-const AdminNewsList = () => {
-  const { list, pagination, isFetching } = useList<INewsItem>({ collectionName: 'news' });
+const ResearchList = () => {
+  const { list, pagination, isFetching } = useList<IResearchItem>({
+    collectionName: 'research',
+  });
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
   // columns
-  const AdvertiserColumn: ProColumns<INewsItem>[] = [
+  const researchColumn: ProColumns<IResearchItem>[] = [
     {
-      title: 'Name',
-      dataIndex: 'name',
+      dataIndex: 'id',
+      title: 'ID',
     },
     {
-      title: 'Place',
-      dataIndex: 'place',
+      title: 'Title',
+      width: 280,
+      dataIndex: 'title',
     },
     {
-      title: 'Start date',
-      dataIndex: 'date',
-      render: (_, { startDate }) => startDate && `${dayjs(startDate).format('DD/MM/YYYY')}`,
+      title: 'Author',
+      dataIndex: 'author',
+      width: 300,
     },
     {
-      title: 'End date',
-      dataIndex: 'date',
-      render: (_, { endDate }) => endDate && `${dayjs(endDate).format('DD/MM/YYYY')}`,
-    },
-    {
-      title: 'Time',
-      dataIndex: 'time',
-      render: (_, { time }) =>
-        `${dayjs(time[0]).format('HH:mm')} - ${dayjs(time[1]).format('HH:mm')}`,
+      title: 'Keywords',
+      dataIndex: 'keywords',
     },
     {
       width: 136,
@@ -56,14 +51,14 @@ const AdminNewsList = () => {
   return (
     <PageContainer
       extra={
-        <Link to="/admin/news/create">
-          <Button type="primary">Create News</Button>
+        <Link to="/admin/research/create">
+          <Button type="primary">Create research</Button>
         </Link>
       }
     >
       <div className="py-8 px-6 bg-white">
         <CustomTable
-          columns={AdvertiserColumn}
+          columns={researchColumn}
           dataSource={list}
           loading={isFetching}
           pagination={pagination}
@@ -72,4 +67,4 @@ const AdminNewsList = () => {
     </PageContainer>
   );
 };
-export default AdminNewsList;
+export default ResearchList;

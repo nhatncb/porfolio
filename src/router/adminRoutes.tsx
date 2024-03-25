@@ -15,11 +15,9 @@ import AdminBookList from 'containers/Admin/Books/List';
 import AdminNewsCreate from 'containers/Admin/News/Create';
 import AdminNewsEdit from 'containers/Admin/News/Edit';
 import AdminNewsList from 'containers/Admin/News/List';
-import AdminResearch from 'containers/Admin/Research';
-import AdminArtisticEducation from 'containers/Admin/Research/ArtisticEducation';
-import ArtisticEducationEdit from 'containers/Admin/Research/ArtisticEducation/Edit';
-import AdminTransversalityOfVoice from 'containers/Admin/Research/TransversalityOfVoice';
-import TransversalityEdit from 'containers/Admin/Research/TransversalityOfVoice/Edit';
+import ResearchCreate from 'containers/Admin/Research/Create';
+import ResearchList from 'containers/Admin/Research/List';
+import ResearchContentEdit from 'containers/Admin/Research/ResearchContentEdit';
 import StatementAdminContent from 'containers/Admin/Statement';
 import StatementEdit from 'containers/Admin/Statement/Edit';
 import AdminVerseCreate from 'containers/Admin/Verses/Create';
@@ -113,36 +111,22 @@ const adminRoutes = [
   {
     path: 'research',
     icon: <TrophyOutlined />,
-    element: <AdminResearch />,
+    element: <ResearchList />,
     name: 'Research',
-    children: [
-      {
-        path: 'transversality',
-        element: <AdminTransversalityOfVoice />,
-      },
-      {
-        path: 'artistic-education',
-        element: <AdminArtisticEducation />,
-      },
+  },
+  {
+    path: 'research/create',
+    element: <ResearchCreate />,
+    name: 'Create Research',
+    hideInMenu: true,
+  },
+  {
+    path: 'research/:id',
+    element: <ResearchContentEdit />,
+    name: 'Edit Research',
+    hideInMenu: true,
+  },
 
-      {
-        path: '',
-        element: <Navigate replace to="transversality" />,
-      },
-    ],
-  },
-  {
-    path: 'research/artistic-education/edit',
-    element: <ArtisticEducationEdit />,
-    name: 'Artistic Education',
-    hideInMenu: true,
-  },
-  {
-    path: 'research/transversality/edit',
-    element: <TransversalityEdit />,
-    name: 'Transversality',
-    hideInMenu: true,
-  },
   {
     path: '',
     element: <Navigate replace to="art-works" />,

@@ -12,14 +12,14 @@ const NewItem = ({ data }: { data: INewsItem }) => {
         style={{ border: '1px solid #000' }}
       >
         <div className="year-container normal-text text-white text-center bg-[black] py-[5px] px-[10px] font-medium">
-          {dayjs(data.date).format('YYYY')}
+          {data.startDate ? dayjs(data.startDate).format('YYYY') : '-'}
         </div>
         <div className="flex-1">
           <div className="font-semibold text-center mt-4 leading-6">
-            {dayjs(data.date).format('MMM').toLowerCase()}
+            {data.startDate ? dayjs(data.startDate).format('MMM').toLowerCase() : '-'}
           </div>
           <div className="font-semibold text-[28px] text-center mt-0.5 leading-9">
-            {dayjs(data.date).format('DD')}
+            {data.startDate ? dayjs(data.startDate).format('DD') : '-'}
           </div>
         </div>
       </div>
@@ -28,8 +28,13 @@ const NewItem = ({ data }: { data: INewsItem }) => {
         <div className="flex gap-2 mt-3">
           <ClockIcon />
           <div className="normal-text flex-1">
-            {dayjs(data.date).format('dddd')}, {dayjs(data.date).format('MMM')}{' '}
-            {dayjs(data.date).format('DD')}, {dayjs(data.date).format('YYYY')} at{' '}
+            {dayjs(data.startDate).format('dddd')}, {dayjs(data.startDate).format('MMM')}{' '}
+            {dayjs(data.startDate).format('DD')}, {dayjs(data.startDate).format('YYYY')}{' '}
+            {data.endDate && '-'} {dayjs(data.startDate).format('dddd')},{' '}
+            {data.endDate && dayjs(data.endDate).format('MMM')}{' '}
+            {data.endDate && dayjs(data.endDate).format('DD')}
+            {data.endDate && ', '}
+            {data.endDate && dayjs(data.endDate).format('YYYY')} at{' '}
             {dayjs(data.time[0]).format('HH:mmA').toLowerCase()} -{' '}
             {dayjs(data.time[1]).format('HH:mmA').toLowerCase()}
           </div>
@@ -38,6 +43,7 @@ const NewItem = ({ data }: { data: INewsItem }) => {
           <MapPinIcon />
           <div className="normal-text flex-1">{data.place}</div>
         </div>
+        {data.description && <div className="normal-text flex-1 mt-3">{data.description}</div>}
       </div>
     </div>
   );

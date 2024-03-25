@@ -426,3 +426,7 @@ button.ant-btn.ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-
   padding-left: 11px;
   padding-right: 11px;
 }
+
+.h-screen.bg-white {
+  width: 100%;
+}

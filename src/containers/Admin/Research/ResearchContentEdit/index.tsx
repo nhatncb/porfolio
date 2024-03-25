@@ -8,15 +8,17 @@ import type { FieldValue } from 'firebase/firestore';
 import { serverTimestamp } from 'firebase/firestore';
 import useFetch from 'hooks/useFetch';
 import useUpdate from 'hooks/useUpdate';
+import type { IResearchItem } from 'models/research/types';
 import type { SubmitHandler } from 'react-hook-form';
 import { useFieldArray, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 import type { ArtisticEducationFormSchema } from './schema';
 import schema from './schema';
 
-const ResearchContentEdit = ({ id }: { id: string }) => {
-  const { data } = useFetch<ArtisticEducationFormSchema>({
+const ResearchContentEdit = () => {
+  const { id = '' } = useParams();
+  const { data } = useFetch<IResearchItem>({
     queryKey: ['research', id],
     collectionName: 'research',
     id,
@@ -38,6 +40,7 @@ const ResearchContentEdit = ({ id }: { id: string }) => {
       keywords: data?.keywords || '',
       author: data?.author || '',
       content: data?.content || [{ data: '' }],
+      viewFullUrl: '',
     },
   });
 
@@ -83,6 +86,7 @@ const ResearchContentEdit = ({ id }: { id: string }) => {
               </div>
             );
           })}
+          <TextInput control={control} label="View full" name="viewFullUrl" required />
           <Button
             className="my-2"
             icon={<PlusCircleOutlined />}

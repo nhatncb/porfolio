@@ -4,7 +4,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form } from 'antd';
 import TextAreaInput from 'components/Form/TextAreaInput';
 import TextInput from 'components/Form/TextInput';
-import UploadInput from 'components/Form/Upload';
 import type { FieldValue } from 'firebase/firestore';
 import { serverTimestamp } from 'firebase/firestore';
 import useMutate from 'hooks/useMutate';
@@ -12,69 +11,64 @@ import type { SubmitHandler } from 'react-hook-form';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 
-import type { BookFormSchema } from './schema';
-import schema from './schema';
+import type { ArtisticEducationFormSchema } from '../ResearchContentEdit/schema';
+import schema from '../ResearchContentEdit/schema';
 
-const AdminBookCreate = () => {
+const ResearchCreate = () => {
   const navigate = useNavigate();
   const { mutateAsync: create, isPending: isCreating } = useMutate<
-    BookFormSchema & { createdAt: FieldValue; updatedAt: FieldValue }
+    ArtisticEducationFormSchema & { createdAt: FieldValue; updatedAt: FieldValue }
   >({
-    tableName: 'books',
+    tableName: 'research',
     defaultToast: true,
   });
-  const { control, handleSubmit } = useForm<BookFormSchema>({
+  const { control, handleSubmit } = useForm<ArtisticEducationFormSchema>({
     mode: 'onTouched',
     resolver: yupResolver(schema),
     values: {
-      name: '',
-      buyUrls: [{ url: '', displayUrl: '' }],
+      title: '',
+      summary: '',
+      keywords: '',
       author: '',
-      imageUrl: null as never,
-      aboutContent: '',
+      content: [{ data: '' }],
+      viewFullUrl: '',
     },
   });
 
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: 'buyUrls',
-  });
-
-  const handleCreateArtwork: SubmitHandler<BookFormSchema> = (values) => {
+  const handleCreateResearch: SubmitHandler<ArtisticEducationFormSchema> = (values) => {
     create(
-      { ...values, createdAt: serverTimestamp(), updatedAt: serverTimestamp() },
-      { onSuccess: () => navigate('/admin/books') },
+      { ...values, updatedAt: serverTimestamp(), createdAt: serverTimestamp() },
+      { onSuccess: () => navigate(`/admin/research/`) },
     );
   };
 
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'content',
+  });
+
   return (
     <PageContainer>
-      <div className="py-8 px-6 bg-white max-w-4xl mx-auto">
-        <Form layout="vertical" onFinish={handleSubmit(handleCreateArtwork)}>
-          <TextInput control={control} label="Name" name="name" required />
+      <div className="py-8 px-6 bg-white max-w-4xl mx-auto mt-4">
+        <Form layout="vertical" onFinish={handleSubmit(handleCreateResearch)}>
+          <TextInput control={control} label="Title" name="title" required />
+          <TextInput control={control} label="Summary" name="summary" required />
+          <TextInput control={control} label="Keywords" name="keywords" required />
           <TextInput control={control} label="Author" name="author" required />
-          <TextAreaInput control={control} label="Content" name="aboutContent" required rows={7} />
-          <UploadInput control={control} label="Image" name="imageUrl" required />
           {fields.map((item, index) => {
             return (
               <div key={item.id}>
                 <div className="flex gap-2 items-center">
-                  <TextInput
+                  <TextAreaInput
                     className="w-full"
                     control={control}
-                    label={`Buy Url ${index + 1}`}
-                    name={`buyUrls.${index}.url`}
+                    label="Content"
+                    name={`content.${index}.data`}
                     required
-                  />
-                  <TextInput
-                    className="w-full"
-                    control={control}
-                    label={`Display Url ${index + 1}`}
-                    name={`buyUrls.${index}.displayUrl`}
-                    required
+                    rows={5}
                   />
                   <Button
-                    className="mt-1 min-w-[40px]"
+                    className="mt-1"
                     disabled={fields.length === 1}
                     icon={<DeleteOutlined />}
                     onClick={() => remove(index)}
@@ -83,11 +77,11 @@ const AdminBookCreate = () => {
               </div>
             );
           })}
+          <TextInput control={control} label="View full" name="viewFullUrl" required />
           <Button
             className="my-2"
-            disabled={fields.length === 2}
             icon={<PlusCircleOutlined />}
-            onClick={() => append({ url: '', displayUrl: '' })}
+            onClick={() => append({ data: '' })}
             type="primary"
           >
             Add More
@@ -102,4 +96,4 @@ const AdminBookCreate = () => {
     </PageContainer>
   );
 };
-export default AdminBookCreate;
+export default ResearchCreate;

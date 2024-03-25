@@ -1,7 +1,7 @@
 import ResearchContentEdit from '../../ResearchContentEdit';
 
 const ArtisticEducationEdit = () => {
-  return <ResearchContentEdit id="artistic-education" />;
+  return <ResearchContentEdit />;
 };
 
 export default ArtisticEducationEdit;

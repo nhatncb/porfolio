@@ -48,7 +48,7 @@ const BookDetail = () => {
         </div>
         <div className="flex flex-col">
           <div className="px-12 py-10 w-[456px] flex-1 overflow-auto">
-            <img alt="" className="w-auto h-auto max-h-[100%] mx-auto" src={detail?.imageUrl} />
+            <img alt="" className="w-auto h-auto max-h-[100%] mx-auto" src={detail?.imageUrl.url} />
           </div>
           <div className="grid grid-cols-[50%_50%] black-top-border black-bottom-border">
             <div

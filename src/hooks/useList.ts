@@ -34,13 +34,21 @@ interface Options<TQueryFnData = unknown, TData = TQueryFnData, TError = unknown
   extends Omit<UseQueryOptions<any[], TError, TData[], unknown[]>, 'queryFn' | 'queryKey'>,
     ExtendOptions {
   collectionName: string;
+  order?: 'desc' | 'asc';
 }
 
 const useList = <TQueryFnData = unknown, TData = TQueryFnData, TError = unknown>(
   options: Options<TQueryFnData, TData, TError>,
 ) => {
-  const { queryKey, collectionName, customParams, transform, defaultParams, ...otherOptions } =
-    options;
+  const {
+    queryKey,
+    collectionName,
+    customParams,
+    transform,
+    defaultParams,
+    order = 'desc',
+    ...otherOptions
+  } = options;
   const { query: searchParams } = useSearch({
     schema: tableQuerySchema,
     defaultValues: defaultParams,
@@ -71,7 +79,7 @@ const useList = <TQueryFnData = unknown, TData = TQueryFnData, TError = unknown>
       const snapshot = await getDocs(
         query(
           collection(db, collectionName),
-          orderBy('createdAt', 'desc'),
+          orderBy('createdAt', order),
           // where('createdAt', '<', date),
           limit(200),
         ).withConverter(genericConverter()),

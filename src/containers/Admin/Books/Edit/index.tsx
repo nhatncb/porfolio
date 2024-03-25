@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form } from 'antd';
 import TextAreaInput from 'components/Form/TextAreaInput';
 import TextInput from 'components/Form/TextInput';
+import UploadInput from 'components/Form/Upload';
 import type { FieldValue } from 'firebase/firestore';
 import { serverTimestamp } from 'firebase/firestore';
 import useFetch from 'hooks/useFetch';
@@ -39,7 +40,7 @@ const AdminBookEdit = () => {
       name: data?.name || '',
       buyUrls: data?.buyUrls || [{ url: '', displayUrl: '' }],
       author: data?.author || '',
-      imageUrl: data?.imageUrl || '',
+      imageUrl: data?.imageUrl || (null as never),
       aboutContent: data?.aboutContent || '',
     },
   });
@@ -63,7 +64,7 @@ const AdminBookEdit = () => {
           <TextInput control={control} label="Name" name="name" required />
           <TextInput control={control} label="Author" name="author" required />
           <TextAreaInput control={control} label="Content" name="aboutContent" required rows={7} />
-          <TextInput control={control} label="Image Url" name="imageUrl" required />
+          <UploadInput control={control} label="Image" name="imageUrl" required />
           {fields.map((item, index) => {
             return (
               <div key={item.id}>
@@ -97,7 +98,7 @@ const AdminBookEdit = () => {
             disabled={fields.length === 2}
             icon={<PlusCircleOutlined />}
             onClick={() => append({ url: '', displayUrl: '' })}
-            type="primary"
+            type="default"
           >
             Add More
           </Button>

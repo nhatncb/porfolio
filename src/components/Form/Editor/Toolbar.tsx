@@ -1,14 +1,11 @@
 import type { Editor } from '@tiptap/react';
-import { Button, Divider, Input } from 'antd';
+import { Button, Divider } from 'antd';
 import {
   AlignCenterIcon,
   AlignLeftIcon,
   AlignRightIcon,
   BoldIcon,
   BulletListIcon,
-  H1Icon,
-  H2Icon,
-  H3Icon,
   ItalicIcon,
   OrderListIcon,
   RedoIcon,
@@ -72,34 +69,6 @@ const Toolbar = ({ editor }: { editor: Editor }) => {
         onClick={() => editor.chain().focus().setTextAlign('right').run()}
         type={editor.isActive({ textAlign: 'right' }) ? 'primary' : 'default'}
       />
-      <Button
-        icon={<H1Icon />}
-        onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-        type={editor.isActive('heading', { level: 1 }) ? 'primary' : 'default'}
-      />
-      <Button
-        icon={<H2Icon />}
-        onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        type={editor.isActive('heading', { level: 2 }) ? 'primary' : 'default'}
-      />
-      <Button
-        icon={<H3Icon />}
-        onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-        type={editor.isActive('heading', { level: 3 }) ? 'primary' : 'default'}
-      />
-      <Input
-        className="max-w-[140px]"
-        onInput={(event) =>
-          editor
-            .chain()
-            .focus()
-            .setColor((event.target as HTMLInputElement).value)
-            .run()
-        }
-        type="color"
-        value={editor.getAttributes('textStyle').color}
-      />
-
       <Divider className="my-2" />
     </div>
   );

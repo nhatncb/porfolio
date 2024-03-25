@@ -12,6 +12,7 @@ import ReactPlayer from 'react-player';
 import { useNavigate, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import TruncateMarkup from 'react-truncate-markup';
+import helpers from 'utils/helpers';
 
 function useFirstRender() {
   const ref = useRef(true);
@@ -30,7 +31,7 @@ const ArtworkDetail = () => {
     id,
   });
   const { list } = useList<IArtworkItem>({ collectionName: 'artworks', staleTime: Infinity });
-  const images = detail?.images || [];
+  const images = detail?.contents || [];
   const navigate = useNavigate();
   const [activeArt, setActiveArt] = useState(0);
   const [showMore, setShowMore] = useState(false);
@@ -107,7 +108,7 @@ const ArtworkDetail = () => {
             images.length > 1 ? 'py-16 px-12 pr-0' : 'p-0 flex-1'
           } overflow-hidden`}
         >
-          {detail?.type === 'IMAGES' && detail.images && (
+          {images && images[activeArt]?.type === 'IMAGE' && (
             <animated.div
               className="flex-1"
               key={activeArt}
@@ -116,12 +117,29 @@ const ArtworkDetail = () => {
               }}
             >
               {images[activeArt] && (
-                <img alt="" className="w-full h-full object-cover" src={images[activeArt]?.url} />
+                <img
+                  alt=""
+                  className="w-full h-full object-cover"
+                  src={images[activeArt]?.data.url}
+                />
               )}
             </animated.div>
           )}
-          {detail?.type === 'VIDEO' && (
-            <ReactPlayer height="100%" url={detail.videoUrl} width="calc(100vw - 71px)" />
+          {images && images[activeArt]?.type === 'VIDEO' && (
+            <animated.div
+              className="flex-1"
+              key={activeArt}
+              style={{
+                opacity: springs[activeArt]?.opacity,
+              }}
+            >
+              <ReactPlayer
+                height="100%"
+                style={{ aspectRatio: 564 / 900 }}
+                url={images[activeArt]?.data.url}
+                width="100%"
+              />
+            </animated.div>
           )}
           {images.length > 1 && (
             <div className="flex flex-col pr-12 overflow-auto ml-[90px]">
@@ -130,11 +148,15 @@ const ArtworkDetail = () => {
                   return (
                     <animated.img
                       alt=""
-                      className={`transparent-border p-2 not:(:first):-mt-[8.5px] -mb-[0.5px] cursor-pointer object-cover`}
+                      className={`transparent-border p-2 not:(:first):-mt-[8.5px] -mb-[0.5px] cursor-pointer object-cover max-h-[132px] max-w-[212px]`}
                       height={132}
                       key={index}
                       onClick={() => setActiveArt(index)}
-                      src={images[index]?.url}
+                      src={
+                        detail?.contents[index]?.type === 'IMAGE'
+                          ? detail?.contents[index]?.data.url
+                          : helpers.getVideoThumbnail(detail?.contents[index]?.data.url || '')
+                      }
                       style={{ borderColor: style.borderColor }}
                       width={212}
                     />

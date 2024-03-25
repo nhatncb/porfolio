@@ -5,4 +5,5 @@ export type IVerseItem = {
   place: string;
   verses: { content: string }[];
   id: string;
+  viewFullUrl: string;
 };

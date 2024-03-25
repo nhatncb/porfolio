@@ -11,5 +11,5 @@ export type IArtworkItem = {
   videoUrl?: string;
   images?: { url: string }[];
   material: string;
-  type: 'IMAGES' | 'VIDEO';
+  contents: { type: 'IMAGE' | 'VIDEO'; data: { url: string; uid?: string; name?: string } }[];
 };

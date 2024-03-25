@@ -11,6 +11,7 @@ const schema = object({
       data: string().trim(),
     }),
   ),
+  viewFullUrl: string().required(),
 });
 
 export default schema;

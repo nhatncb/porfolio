@@ -1,21 +1,20 @@
-import useList from 'hooks/useList';
 import type { IArtworkItem } from 'models/artwork/types';
 
 import ArtworkItem from './ArtworkItem';
 
 const ArtworkList = ({
   type = 'performance',
+  data = [],
 }: {
-  type?: 'performance' | 'sculpture' | 'installation' | 'collaboration' | 'video' | 'others';
+  type?: string;
+  data: IArtworkItem[];
 }) => {
-  const { list: data } = useList<IArtworkItem>({ collectionName: 'artworks', staleTime: Infinity });
-  const list = data.filter((item) => item.tag.includes(type.toUpperCase())).slice(0, 4);
   return (
-    <>
-      {list.map((artwork, index) => (
-        <ArtworkItem activeType={type} data={artwork || {}} key={index} />
+    <div className="grid grid-cols-4 w-full">
+      {data.map((artwork) => (
+        <ArtworkItem activeType={type} data={artwork || {}} key={artwork.id} />
       ))}
-    </>
+    </div>
   );
 };
 

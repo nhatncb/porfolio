@@ -3,9 +3,11 @@ import { array, object, string } from 'yup';
 
 const schema = object({
   name: string().trim().required(),
-  date: string().required(),
+  startDate: string().trim(),
+  endDate: string().trim(),
   place: string().required().trim(),
   time: array().of(string()).required().min(2),
+  description: string().trim(),
 });
 
 export default schema;

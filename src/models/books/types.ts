@@ -2,7 +2,7 @@ export type IBookItem = {
   id: string;
   name: string;
   author: string;
-  imageUrl: string;
+  imageUrl: { uid: string; url: string; name: string };
   aboutContent: string;
   updatedAt: string;
   createdAt: string;

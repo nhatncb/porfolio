@@ -3,12 +3,10 @@ import Root from 'containers';
 import AboutPage from 'containers/About';
 import Artworks from 'containers/Artworks';
 import ArtworkDetail from 'containers/Artworks/ArtworkDetail';
-import Performance from 'containers/Artworks/ArtworkList';
 import Home from 'containers/Home';
 import PageLayout from 'containers/Layout';
 import Research from 'containers/Research';
-import ArtisticEducation from 'containers/Research/ArtisticEducation';
-import Transversality from 'containers/Research/Transversality';
+import ResearchDetail from 'containers/Research/Detail';
 import Writings from 'containers/Writings';
 import BookDetail from 'containers/Writings/BookDetail';
 import Books from 'containers/Writings/Books';
@@ -45,16 +43,16 @@ export const indexRoutes: RouteObject[] = [
         element: <AboutPage />,
       },
       {
-        path: 'artworks',
+        path: 'artworks/:type',
         element: <Artworks />,
-        children: [
-          { path: 'performance', element: <Performance /> },
-          { path: 'sculpture', element: <Performance type="sculpture" /> },
-          { path: 'installation', element: <Performance type="installation" /> },
-          { path: 'collaboration', element: <Performance type="collaboration" /> },
-          { path: 'video', element: <Performance type="video" /> },
-          { path: 'others', element: <Performance type="others" /> },
-        ],
+        // children: [
+        //   { path: 'performance', element: <Performance /> },
+        //   { path: 'sculpture', element: <Performance type="sculpture" /> },
+        //   { path: 'installation', element: <Performance type="installation" /> },
+        //   { path: 'collaboration', element: <Performance type="collaboration" /> },
+        //   { path: 'video', element: <Performance type="video" /> },
+        //   { path: 'others', element: <Performance type="others" /> },
+        // ],
       },
       {
         path: 'artworks/:type/:id',
@@ -83,14 +81,9 @@ export const indexRoutes: RouteObject[] = [
       {
         path: 'research',
         element: <Research />,
-        children: [
-          { path: 'transversality', element: <Transversality /> },
-          {
-            path: 'artistic-education',
-            element: <ArtisticEducation />,
-          },
-        ],
+        children: [{ path: ':id', element: <ResearchDetail /> }],
       },
+
       {
         path: 'admin',
         // errorElement: <NotFoundPage />,

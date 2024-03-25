@@ -1,7 +1,7 @@
 import ResearchContentEdit from '../../ResearchContentEdit';
 
 const TransversalityEdit = () => {
-  return <ResearchContentEdit id="transversality" />;
+  return <ResearchContentEdit />;
 };
 
 export default TransversalityEdit;

@@ -3,6 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form, Spin } from 'antd';
 import EditorInput from 'components/Form/Editor';
 import TextInput from 'components/Form/TextInput';
+import UploadInput from 'components/Form/Upload';
 import type { FieldValue } from 'firebase/firestore';
 import { serverTimestamp } from 'firebase/firestore';
 import useFetch from 'hooks/useFetch';
@@ -32,11 +33,17 @@ const StatementEdit = () => {
     mode: 'onTouched',
     resolver: yupResolver(schema),
     values: {
-      thumbnailImage: data?.thumbnailImage || '',
+      thumbnailImage: {
+        url: data?.thumbnailImage.url || '',
+        uid: data?.thumbnailImage.uid || '',
+        name: data?.thumbnailImage.name || '',
+        status: 'done',
+      },
       born: data?.born || '',
       email: data?.email || '',
       phone: data?.phone || '',
       introduction: data?.introduction || '',
+      cvUrl: data?.cvUrl || '',
     },
   });
 
@@ -59,11 +66,13 @@ const StatementEdit = () => {
     <PageContainer>
       <div className="py-8 px-6 bg-white max-w-4xl mx-auto">
         <Form layout="vertical" onFinish={handleSubmit(handleUpdateArtwork)}>
-          <TextInput control={control} label="Thumbnail" name="thumbnailImage" required />
+          <UploadInput control={control} label="Thumbnail" name="thumbnailImage" required />
           <TextInput control={control} label="Born" name="born" required />
           <TextInput control={control} label="Email" name="email" required />
           <TextInput control={control} label="Phone" name="phone" required />
+          <TextInput control={control} label="CV Url" name="cvUrl" required />
           <EditorInput control={control} label="Introduction" name="introduction" required />
+
           <div className="flex justify-end">
             <Button htmlType="submit" loading={isCreating} type="primary">
               Save

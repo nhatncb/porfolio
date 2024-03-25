@@ -2,34 +2,36 @@ import './styles.css';
 
 import { animated, to, useSpring } from '@react-spring/web';
 import useGlobalState from 'hooks/useGlobalState';
+import useList from 'hooks/useList';
+import type { IResearchItem } from 'models/research/types';
 import { Link, useLocation } from 'react-router-dom';
 
-const artWorkMenus = [
-  {
-    title: 'Performance',
-    url: '/artworks/performance',
-  },
-  {
-    title: 'Sculpture',
-    url: '/artworks/sculpture',
-  },
-  {
-    title: 'Installation',
-    url: '/artworks/installation',
-  },
-  {
-    title: 'Collaboration',
-    url: '/artworks/collaboration',
-  },
-  {
-    title: 'Video',
-    url: '/artworks/video',
-  },
-  {
-    title: 'Others',
-    url: '/artworks/others',
-  },
-];
+// const artWorkMenus = [
+//   {
+//     title: 'Performance',
+//     url: '/artworks/performance',
+//   },
+//   {
+//     title: 'Sculpture',
+//     url: '/artworks/sculpture',
+//   },
+//   {
+//     title: 'Installation',
+//     url: '/artworks/installation',
+//   },
+//   {
+//     title: 'Collaboration',
+//     url: '/artworks/collaboration',
+//   },
+//   {
+//     title: 'Video',
+//     url: '/artworks/video',
+//   },
+//   {
+//     title: 'Others',
+//     url: '/artworks/others',
+//   },
+// ];
 
 const writingMenus = [
   {
@@ -46,24 +48,32 @@ const writingMenus = [
   },
 ];
 
-const researchMenus = [
-  {
-    title: 'The Transversality of Voice',
-    url: '/research/transversality',
-  },
-  {
-    title: 'Artistic Education',
-    url: '/research/artistic-education',
-  },
-];
-
-const categories = [
-  { title: 'Artworks', menus: artWorkMenus, activeKeys: artWorkMenus.map((menu) => menu.url) },
-  { title: 'Writings', menus: writingMenus, activeKeys: writingMenus.map((menu) => menu.url) },
-  { title: 'Research', menus: researchMenus, activeKeys: researchMenus.map((menu) => menu.url) },
-] as const;
-
 const HamburgetButton = () => {
+  const { list: tagList } = useList<{ name: string }>({
+    collectionName: 'tag',
+    order: 'asc',
+    staleTime: Infinity,
+  });
+  const { list: researchList } = useList<IResearchItem>({
+    collectionName: 'research',
+    staleTime: Infinity,
+  });
+  const artWorkMenus = tagList.map((item) => ({
+    title: item.name.toLowerCase(),
+    url: `/artworks/${item.name.toLowerCase()}`,
+  }));
+
+  const researchMenus = researchList.map((item) => ({
+    title: item.title,
+    url: `/research/${item.id}`,
+  }));
+
+  const categories = [
+    { title: 'Artworks', menus: artWorkMenus, activeKeys: artWorkMenus.map((menu) => menu.url) },
+    { title: 'Writings', menus: writingMenus, activeKeys: writingMenus.map((menu) => menu.url) },
+    { title: 'Research', menus: researchMenus, activeKeys: researchMenus.map((menu) => menu.url) },
+  ] as const;
+
   const { drawer, setDrawer } = useGlobalState();
   const { pathname } = useLocation();
   const props = useSpring({
@@ -128,12 +138,17 @@ const HamburgetButton = () => {
                       <Link
                         className={`${
                           isActivePath ? 'font-normal' : 'blur-text'
-                        } text-[16px] mb-2 block leading-[22px]`}
+                        } text-[16px] mb-2 block leading-[22px] hover:opacity-100`}
                         key={subMenu.title}
                         onClick={() => setDrawer(false)}
                         to={subMenu.url}
                       >
-                        <span className={!isActivePath ? 'hover-underline inline-block' : ''}>
+                        <span
+                          className={!isActivePath ? 'hover-underline inline-block' : ''}
+                          style={{
+                            textTransform: 'capitalize',
+                          }}
+                        >
                           {subMenu.title}
                         </span>
                       </Link>

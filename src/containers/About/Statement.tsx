@@ -3,7 +3,7 @@ import useFetch from 'hooks/useFetch';
 import React from 'react';
 
 const StatementContent = () => {
-  const { data } = useFetch<StatementFormSchema>({
+  const { data } = useFetch<StatementFormSchema & { cvUrl: string }>({
     queryKey: ['statement', 'main'],
     collectionName: 'statement',
     id: 'main',
@@ -16,7 +16,7 @@ const StatementContent = () => {
           <img
             alt="dnlx"
             height={412}
-            src={data?.thumbnailImage || '/images/Profile.png'}
+            src={data?.thumbnailImage?.url || '/images/Profile.png'}
             width={268}
           />
           <div className="mt-8">

@@ -2,11 +2,14 @@ import { animated, useSprings } from '@react-spring/web';
 import ArrowLeftIcon from 'assets/icons/arrow-left.svg';
 import ArrowRightIcon from 'assets/icons/arrow-right.svg';
 import DownloadIcon from 'assets/icons/download.svg';
+import type { StatementFormSchema } from 'containers/Admin/Statement/Edit/schema';
+import useFetch from 'hooks/useFetch';
 import useList from 'hooks/useList';
 import type { INewsItem } from 'models/news/types';
 import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
+import helpers from 'utils/helpers';
 
 import NewsContent from './News';
 import StatementContent from './Statement';
@@ -25,6 +28,12 @@ const MENUS = [
 const AboutPage = () => {
   const location = useLocation();
   const [page, setPage] = useState(1);
+  const { data: statementData } = useFetch<StatementFormSchema & { cvUrl: string }>({
+    queryKey: ['statement', 'main'],
+    collectionName: 'statement',
+    id: 'main',
+  });
+
   const { list: data } = useList<INewsItem>({ collectionName: 'news', staleTime: Infinity });
   const news = data.slice(page === 1 ? (page - 1) * 8 : (page - 1) * 8 - 1, page - 1 + 8);
   const renderContent = (path: string) => {
@@ -66,12 +75,18 @@ const AboutPage = () => {
         </div>
         {location.pathname === '/statement' ? (
           <div className={`basis-[215px] flex justify-center items-center`}>
-            <button className="text-btn hover-underline">
-              <span className="flex items-center gap-2 svg-24 normal-text">
-                <DownloadIcon />
-                download CV
-              </span>
-            </button>
+            <a
+              href={helpers.formatUrl(statementData?.cvUrl || '#') || '#'}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <button className="text-btn hover-underline">
+                <span className="flex items-center gap-2 svg-24 normal-text">
+                  <DownloadIcon />
+                  download CV
+                </span>
+              </button>
+            </a>
           </div>
         ) : (
           <div className={`basis-[160px] flex justify-center items-center`}>

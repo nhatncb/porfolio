@@ -3,6 +3,8 @@ export type INewsItem = {
   author: string;
   place: string;
   id: string;
-  date: string;
+  startDate?: string;
+  endDate?: string;
   name: string;
+  description?: string;
 };

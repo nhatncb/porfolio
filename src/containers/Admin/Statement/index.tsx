@@ -26,7 +26,7 @@ const StatementAdminContent = () => {
             <img
               alt="dnlx"
               height={412}
-              src={data?.thumbnailImage || '/images/Profile.png'}
+              src={data?.thumbnailImage.url || '/images/Profile.png'}
               width={268}
             />
             <div className="mt-8">

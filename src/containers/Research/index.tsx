@@ -1,21 +1,21 @@
 import { animated, useSprings } from '@react-spring/web';
+import useList from 'hooks/useList';
+import type { IResearchItem } from 'models/research/types';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
-const MENUS = [
-  {
-    label: 'the transversality of voice',
-    to: '/research/transversality',
-  },
-  {
-    label: 'artistic education',
-    to: '/research/artistic-education',
-  },
-];
-
 const Research = () => {
+  const { list: researchList } = useList<IResearchItem>({
+    collectionName: 'research',
+    staleTime: Infinity,
+  });
+  const MENUS = researchList.map((item) => ({
+    label: item.title,
+    to: `/research/${item.id}`,
+  }));
+
   const { pathname } = useLocation();
   const [springs] = useSprings(
-    MENUS.length,
+    researchList.length,
     (i) => ({
       borderColor: MENUS[i]?.to === pathname ? '#000' : 'transparent',
     }),
@@ -28,7 +28,7 @@ const Research = () => {
           <p className="m-0 page-title">Research</p>
         </div>
         <div className="black-bottom-border">
-          <div className="px-[48px] py-[18px] flex-1 gap-4 flex">
+          <div className="px-[48px] py-[18px] flex-1 gap-4 flex min-h-[72px]">
             {springs.map((props, index) => (
               <Link key={MENUS[index]?.to} to={MENUS[index]?.to || ''}>
                 <animated.button

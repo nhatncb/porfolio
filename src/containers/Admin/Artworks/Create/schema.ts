@@ -2,27 +2,27 @@ import type { InferType } from 'yup';
 import { array, object, string } from 'yup';
 
 const schema = object({
-  type: string().required(),
-  images: array()
-    .of(
-      object({
-        url: string()
-          .trim()
-          .when('type', ([type], field) => {
-            return type === 'IMAGES' ? field.required() : field;
-          }),
+  contents: array().of(
+    object({
+      type: string().required(),
+      data: object({
+        url: string().required(),
+        uid: string().when('type', ([type], field) => {
+          return type === 'IMAGE' ? field.required() : field;
+        }),
+        name: string().when('type', ([type], field) => {
+          return type === 'IMAGE' ? field.required() : field;
+        }),
       }),
-    )
-    .when('type', ([type], field) => {
-      return type === 'IMAGES' ? field.min(1).required() : field;
     }),
-  videoUrl: string()
-    .trim()
-    .when('type', ([type], field) => {
-      return type === 'VIDEO' ? field.required() : field;
-    }),
+  ),
   name: string().required().trim(),
-  thumbnailImage: string().trim().required(),
+  thumbnailImage: object({
+    uid: string().required(),
+    name: string().required(),
+    status: string().required(),
+    url: string().required(),
+  }),
   material: string().required().trim(),
   place: string().required().trim(),
   time: string().required().trim(),
