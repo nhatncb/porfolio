@@ -32,7 +32,7 @@ const ResearchDetail = () => {
                 } gap-6 mt-6 normal-text`}
               >
                 {(data?.content || []).map((item, index) => (
-                  <div className="max-w-[300px]" key={index}>
+                  <div className="max-w-[300px] leading-[20px]" key={index}>
                     {item.data}
                   </div>
                 ))}

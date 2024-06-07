@@ -29,7 +29,7 @@ const AdminBookEdit = () => {
   const { mutateAsync: update, isPending: isUpdating } = useUpdate<
     BookFormSchema & { createdAt: FieldValue; updatedAt: FieldValue }
   >({
-    collectionName: 'artworks',
+    collectionName: 'books',
     id,
     defaultToast: true,
   });
@@ -53,7 +53,7 @@ const AdminBookEdit = () => {
   const handleCreateArtwork: SubmitHandler<BookFormSchema> = (values) => {
     update(
       { ...values, createdAt: serverTimestamp(), updatedAt: serverTimestamp() },
-      { onSuccess: () => navigate('/admin/books') },
+      { onSuccess: () => navigate('/admin/publications') },
     );
   };
 

@@ -43,7 +43,7 @@ const AdminBookCreate = () => {
   const handleCreateArtwork: SubmitHandler<BookFormSchema> = (values) => {
     create(
       { ...values, createdAt: serverTimestamp(), updatedAt: serverTimestamp() },
-      { onSuccess: () => navigate('/admin/books') },
+      { onSuccess: () => navigate('/admin/publications') },
     );
   };
 

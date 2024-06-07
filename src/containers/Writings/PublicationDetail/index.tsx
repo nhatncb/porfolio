@@ -9,25 +9,25 @@ import helpers from 'utils/helpers';
 
 const BookDetail = () => {
   const navigate = useNavigate();
-  const { bookId } = useParams();
+  const { publicationId } = useParams();
   const { list: data } = useList<IBookItem>({ collectionName: 'books', staleTime: Infinity });
-  const detail = data.find((book) => book.id === bookId);
+  const detail = data.find((book) => book.id === publicationId);
 
   const handleNavigate = (next?: boolean) => {
-    const currentIndex = data.findIndex((book) => book.id === bookId);
+    const currentIndex = data.findIndex((book) => book.id === publicationId);
     if (next) {
       if (currentIndex < data.length - 1) {
-        navigate(`/writings/books/${data[currentIndex + 1]?.id}`);
+        navigate(`/writings/publications/${data[currentIndex + 1]?.id}`);
       }
       if (currentIndex === data.length - 1) {
-        navigate(`/writings/books/${data[0]?.id}`);
+        navigate(`/writings/publications/${data[0]?.id}`);
       }
     } else {
       if (currentIndex > 0) {
-        navigate(`/writings/books/${data[currentIndex - 1]?.id}`);
+        navigate(`/writings/publications/${data[currentIndex - 1]?.id}`);
       }
       if (currentIndex === 0) {
-        navigate(`/writings/books/${data[data.length - 1]?.id}`);
+        navigate(`/writings/publications/${data[data.length - 1]?.id}`);
       }
     }
   };
@@ -43,16 +43,24 @@ const BookDetail = () => {
             by {detail?.author}
           </div>
           <div className="p-16 whitespace-pre-line overflow-auto h-full flex flex-col justify-center">
-            <span className="mx-auto max-w-[775px] block normal-text">{detail?.aboutContent}</span>
+            <span className="mx-auto max-w-[775px] block normal-text !leading-[20px]">
+              {detail?.aboutContent}
+            </span>
           </div>
         </div>
         <div className="flex flex-col">
           <div className="px-12 py-10 w-[456px] flex-1 overflow-auto">
             <img alt="" className="w-auto h-auto max-h-[100%] mx-auto" src={detail?.imageUrl.url} />
           </div>
-          <div className="grid grid-cols-[50%_50%] black-top-border black-bottom-border">
+          <div
+            className={`grid ${
+              detail?.buyUrls[1] ? 'grid-cols-[50%_50%]' : ''
+            } black-top-border black-bottom-border`}
+          >
             <div
-              className="flex gap-1 text-[12px] leading-[18px] w-full black-right-border items-center justify-center min-h-8 py-[17px] svg-16 pointer"
+              className={`flex gap-1 text-[12px] leading-[18px] w-full ${
+                detail?.buyUrls[1] ? 'black-right-border' : ''
+              }items-center justify-center min-h-8 py-[17px] svg-16 pointer`}
               onClick={() =>
                 detail?.buyUrls[0]?.url && window.open(helpers.formatUrl(detail?.buyUrls[0]?.url))
               }
@@ -60,22 +68,24 @@ const BookDetail = () => {
               <BlackArrowRightIcon />
               <div className="normal-text font-medium">{detail?.buyUrls[0]?.displayUrl}</div>
             </div>
-            <div
-              className="flex gap-1 text-[12px] leading-[18px] w-full items-center justify-center min-h-8 py-[17px] svg-16 pointer"
-              onClick={() =>
-                detail?.buyUrls[1]?.url && window.open(helpers.formatUrl(detail?.buyUrls[1]?.url))
-              }
-            >
-              <BlackArrowRightIcon />
-              <div className="normal-text font-medium">{detail?.buyUrls[1]?.displayUrl}</div>
-            </div>
+            {detail?.buyUrls[1] && (
+              <div
+                className="flex gap-1 text-[12px] leading-[18px] w-full items-center justify-center min-h-8 py-[17px] svg-16 pointer"
+                onClick={() =>
+                  detail?.buyUrls[1]?.url && window.open(helpers.formatUrl(detail?.buyUrls[1]?.url))
+                }
+              >
+                <BlackArrowRightIcon />
+                <div className="normal-text font-medium">{detail?.buyUrls[1]?.displayUrl}</div>
+              </div>
+            )}
           </div>
         </div>
       </div>
       <div className="flex-shrink-0 flex py-6 px-[48px] justify-between">
-        <Link className="flex items-center gap-[6px]" to="/writings/books">
+        <Link className="flex items-center gap-[6px]" to="/writings/publications">
           <PlusIcon />
-          <div className="normal-text font-medium">book list</div>
+          <div className="normal-text font-medium">publication list</div>
         </Link>
         <div className="flex gap-6 items-center">
           <div className="flex gap-4">

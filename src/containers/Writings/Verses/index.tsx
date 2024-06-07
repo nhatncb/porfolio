@@ -6,7 +6,12 @@ import type { IVerseItem } from 'models/verses/types';
 import VerseItem from './VerseItem';
 
 const Verses = () => {
-  const { list: data } = useList<IVerseItem>({ collectionName: 'verses', staleTime: Infinity });
+  const { list: data } = useList<IVerseItem>({
+    collectionName: 'verses',
+    staleTime: Infinity,
+    orderByField: 'time',
+    order: 'desc',
+  });
 
   return (
     <div className="flex-1 content-container px-[48px] py-[42px] overflow-auto">

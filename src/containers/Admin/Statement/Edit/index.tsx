@@ -2,6 +2,7 @@ import { PageContainer } from '@ant-design/pro-layout';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form, Spin } from 'antd';
 import EditorInput from 'components/Form/Editor';
+import TextAreaInput from 'components/Form/TextAreaInput';
 import TextInput from 'components/Form/TextInput';
 import UploadInput from 'components/Form/Upload';
 import type { FieldValue } from 'firebase/firestore';
@@ -44,6 +45,7 @@ const StatementEdit = () => {
       phone: data?.phone || '',
       introduction: data?.introduction || '',
       cvUrl: data?.cvUrl || '',
+      otherInfo: data?.otherInfo || '',
     },
   });
 
@@ -72,6 +74,7 @@ const StatementEdit = () => {
           <TextInput control={control} label="Phone" name="phone" required />
           <TextInput control={control} label="CV Url" name="cvUrl" required />
           <EditorInput control={control} label="Introduction" name="introduction" required />
+          <TextAreaInput control={control} label="Other Info" name="otherInfo" required rows={5} />
 
           <div className="flex justify-end">
             <Button htmlType="submit" loading={isCreating} type="primary">

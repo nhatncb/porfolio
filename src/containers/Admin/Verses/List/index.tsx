@@ -9,7 +9,11 @@ import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
 const AdminVerseList = () => {
-  const { list, pagination, isFetching } = useList<IVerseItem>({ collectionName: 'verses' });
+  const { list, pagination, isFetching } = useList<IVerseItem>({
+    collectionName: 'verses',
+    orderByField: 'time',
+    order: 'desc',
+  });
   const { pathname } = useLocation();
   const navigate = useNavigate();
 

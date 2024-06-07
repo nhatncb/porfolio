@@ -16,10 +16,10 @@ const ResearchList = () => {
 
   // columns
   const researchColumn: ProColumns<IResearchItem>[] = [
-    {
-      dataIndex: 'id',
-      title: 'ID',
-    },
+    // {
+    //   dataIndex: 'id',
+    //   title: 'ID',
+    // },
     {
       title: 'Title',
       width: 280,

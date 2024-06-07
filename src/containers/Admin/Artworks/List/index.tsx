@@ -8,7 +8,10 @@ import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
 const AdminArtworkList = () => {
-  const { list, pagination, isFetching } = useList<IArtworkItem>({ collectionName: 'artworks' });
+  const { list, pagination, isFetching } = useList<IArtworkItem>({
+    collectionName: 'artworks',
+    orderByField: 'time',
+  });
   const { pathname } = useLocation();
   const navigate = useNavigate();
 

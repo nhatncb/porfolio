@@ -73,21 +73,21 @@ const adminRoutes = [
     hideInMenu: true,
   },
   {
-    path: 'books',
+    path: 'publications',
     element: <AdminBookList />,
-    name: 'Books',
+    name: 'Publications',
     icon: <BookOutlined />,
   },
   {
-    path: 'books/create',
+    path: 'publications/create',
     element: <AdminBookCreate />,
-    name: 'Create Book',
+    name: 'Create Publication',
     hideInMenu: true,
   },
   {
-    path: 'books/:id',
+    path: 'publications/:id',
     element: <AdminBookEdit />,
-    name: 'Edit Book',
+    name: 'Edit Publication',
     hideInMenu: true,
   },
   {

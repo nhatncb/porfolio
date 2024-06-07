@@ -13,6 +13,7 @@ const schema = object({
   email: string().required().trim(),
   phone: string().required().trim(),
   introduction: string().required().trim(),
+  otherInfo: string().required().trim(),
 });
 
 export default schema;

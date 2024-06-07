@@ -38,13 +38,13 @@ const writingMenus = [
     title: 'Verses',
     url: '/writings/verses',
   },
+  // {
+  //   title: 'Essays',
+  //   url: '/writings/essays',
+  // },
   {
-    title: 'Essays',
-    url: '/writings/essays',
-  },
-  {
-    title: 'Books',
-    url: '/writings/books',
+    title: 'Publications',
+    url: '/writings/publications',
   },
 ];
 

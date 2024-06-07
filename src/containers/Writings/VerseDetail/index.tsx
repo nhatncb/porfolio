@@ -8,7 +8,12 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const VerseDetail = () => {
   const { verseId = '' } = useParams();
-  const { list } = useList<IVerseItem>({ collectionName: 'verses', staleTime: Infinity });
+  const { list } = useList<IVerseItem>({
+    collectionName: 'verses',
+    staleTime: Infinity,
+    orderByField: 'time',
+    order: 'desc',
+  });
 
   const detail = list.find((item) => item.id === verseId);
   const navigate = useNavigate();
@@ -34,14 +39,14 @@ const VerseDetail = () => {
   return (
     <div className="h-screen bg-white flex flex-1">
       <div className="flex-1 flex flex-col">
-        <div className="text-[20px] leading-[26px] flex-1 black-bottom-border px-[48px] grid-cols-12 grid-rows-6	grid gap-[24px] whitespace-pre-line">
-          <div className="row-start-2 col-start-2 col-span-2 relative">
+        <div className="text-[20px] leading-[26px] flex-1 black-bottom-border px-[48px] grid-cols-4 grid-rows-6	grid gap-[24px] whitespace-pre-line">
+          <div className="row-start-2 col-start-1 col-span-1 relative">
             <span className="absolute top-0 left-0">{detail?.verses[0]?.content}</span>
           </div>
-          <div className="row-start-3 col-start-4 col-span-2 relative">
+          <div className="row-start-3 col-start-2 col-span-1 relative">
             <span className="absolute top-0 left-0">{detail?.verses[1]?.content}</span>
           </div>
-          <div className="row-start-4 col-start-6 col-span-2 relative">
+          <div className="row-start-4 col-start-3 col-span-1 relative">
             <span className="absolute top-0 left-0">{detail?.verses[2]?.content}</span>
           </div>
         </div>

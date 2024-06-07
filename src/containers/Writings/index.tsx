@@ -6,13 +6,13 @@ const MENUS = [
     label: 'verses',
     to: '/writings/verses',
   },
+  // {
+  //   label: 'essays',
+  //   to: '/writings/essays',
+  // },
   {
-    label: 'essays',
-    to: '/writings/essays',
-  },
-  {
-    label: 'books',
-    to: '/writings/books',
+    label: 'publications',
+    to: '/writings/publications',
   },
 ];
 

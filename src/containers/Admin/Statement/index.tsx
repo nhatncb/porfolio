@@ -35,6 +35,9 @@ const StatementAdminContent = () => {
                 <div className="normal-text">E: {data?.email || ''}</div>
                 <div className="normal-text">T: {data?.phone || ''}</div>
               </div>
+              {data?.otherInfo && (
+                <div className="mt-2 normal-text whitespace-pre-line">{data.otherInfo}</div>
+              )}
             </div>
           </div>
         </div>

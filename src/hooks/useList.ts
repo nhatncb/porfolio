@@ -35,6 +35,7 @@ interface Options<TQueryFnData = unknown, TData = TQueryFnData, TError = unknown
     ExtendOptions {
   collectionName: string;
   order?: 'desc' | 'asc';
+  orderByField?: string;
 }
 
 const useList = <TQueryFnData = unknown, TData = TQueryFnData, TError = unknown>(
@@ -47,6 +48,7 @@ const useList = <TQueryFnData = unknown, TData = TQueryFnData, TError = unknown>
     transform,
     defaultParams,
     order = 'desc',
+    orderByField = 'createdAt',
     ...otherOptions
   } = options;
   const { query: searchParams } = useSearch({
@@ -79,7 +81,7 @@ const useList = <TQueryFnData = unknown, TData = TQueryFnData, TError = unknown>
       const snapshot = await getDocs(
         query(
           collection(db, collectionName),
-          orderBy('createdAt', order),
+          orderBy(orderByField, order),
           // where('createdAt', '<', date),
           limit(200),
         ).withConverter(genericConverter()),

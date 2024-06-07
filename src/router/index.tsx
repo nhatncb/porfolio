@@ -8,8 +8,8 @@ import PageLayout from 'containers/Layout';
 import Research from 'containers/Research';
 import ResearchDetail from 'containers/Research/Detail';
 import Writings from 'containers/Writings';
-import BookDetail from 'containers/Writings/BookDetail';
-import Books from 'containers/Writings/Books';
+import PublicationDetail from 'containers/Writings/PublicationDetail';
+import Publications from 'containers/Writings/Publications';
 import VerseDetail from 'containers/Writings/VerseDetail';
 import Verses from 'containers/Writings/Verses';
 import type { RouteObject } from 'react-router';
@@ -63,16 +63,16 @@ export const indexRoutes: RouteObject[] = [
         element: <Writings />,
         children: [
           { path: 'verses', element: <Verses /> },
-          { path: 'essays', element: <div /> },
+          // { path: 'essays', element: <div /> },
           {
-            path: 'books',
-            element: <Books />,
+            path: 'publications',
+            element: <Publications />,
           },
         ],
       },
       {
-        path: 'writings/books/:bookId',
-        element: <BookDetail />,
+        path: 'writings/publications/:publicationId',
+        element: <PublicationDetail />,
       },
       {
         path: 'writings/verses/:verseId',

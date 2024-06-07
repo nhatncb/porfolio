@@ -11,7 +11,11 @@ import ArtworkList from './ArtworkList';
 const Artworks = () => {
   const [slice, setSlice] = useState(0);
   const { type = 'performance' } = useParams();
-  const { list: data } = useList<IArtworkItem>({ collectionName: 'artworks', staleTime: Infinity });
+  const { list: data } = useList<IArtworkItem>({
+    collectionName: 'artworks',
+    staleTime: Infinity,
+    orderByField: 'time',
+  });
   const list = data.filter((item) => item.tag.includes(type.toUpperCase()));
   const sliceList = list.slice(slice * 4, (slice + 1) * 4);
   const handleNavigate = (next?: boolean) => {

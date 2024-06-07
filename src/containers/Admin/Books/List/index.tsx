@@ -45,8 +45,8 @@ const AdminBookList = () => {
   return (
     <PageContainer
       extra={
-        <Link to="/admin/books/create">
-          <Button type="primary">Create Books</Button>
+        <Link to="/admin/publications/create">
+          <Button type="primary">Create Publication</Button>
         </Link>
       }
     >

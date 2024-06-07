@@ -30,7 +30,11 @@ const ArtworkDetail = () => {
     collectionName: 'artworks',
     id,
   });
-  const { list } = useList<IArtworkItem>({ collectionName: 'artworks', staleTime: Infinity });
+  const { list } = useList<IArtworkItem>({
+    collectionName: 'artworks',
+    staleTime: Infinity,
+    orderByField: 'time',
+  });
   const images = detail?.contents || [];
   const navigate = useNavigate();
   const [activeArt, setActiveArt] = useState(0);
@@ -73,7 +77,7 @@ const ArtworkDetail = () => {
   };
   const renderTagSection = () => {
     return (
-      <div className="flex justify-between mt-[8px]">
+      <div className="flex justify-between mt-[12px]">
         <div
           className="cursor-pointer font-medium normal-text flex gap-1"
           onClick={() => setShowMore(!showMore)}
@@ -174,20 +178,20 @@ const ArtworkDetail = () => {
             </div>
             <div className="relative w-full">
               <animated.div
-                className={`bg-white w-full px-10 overflow-hidden absolute bottom-0 right-0 py-[23px] black-top-border black-left-border ${
-                  showMore ? 'opacity-[0.85]' : 'opacity-1'
+                className={`bg-white w-full px-10 overflow-hidden absolute bottom-0 right-0 py-[20px] black-top-border black-left-border ${
+                  showMore ? 'opacity-[0.9]' : 'opacity-1'
                 }`}
                 style={spring}
               >
                 <div ref={ref}>
                   {showMore ? (
                     <>
-                      <div className={`normal-text`}>{detail?.content}</div>
+                      <div className={`normal-text !leading-[20px]`}>{detail?.content}</div>
                       {renderTagSection()}
                     </>
                   ) : (
                     <TruncateMarkup ellipsis={readMoreEllipsis} lines={4}>
-                      <div className={`normal-text`}>{detail?.content}</div>
+                      <div className={`normal-text !leading-[20px]`}>{detail?.content}</div>
                     </TruncateMarkup>
                   )}
                 </div>

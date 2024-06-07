@@ -26,6 +26,9 @@ const StatementContent = () => {
               <div className="normal-text">T: {data?.phone || ''}</div>
             </div>
           </div>
+          {data?.otherInfo && (
+            <div className="mt-2 normal-text whitespace-pre-line">{data.otherInfo}</div>
+          )}
         </div>
       </div>
 
