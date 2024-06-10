@@ -94,7 +94,8 @@ const AdminVerseCreate = () => {
           >
             Add More
           </Button>
-          <div className="flex justify-end">
+          <div className="flex justify-end gap-2">
+            <Button onClick={() => navigate(-1)}>Cancel</Button>
             <Button htmlType="submit" loading={isCreating} type="primary">
               Save
             </Button>

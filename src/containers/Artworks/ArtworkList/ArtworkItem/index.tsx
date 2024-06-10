@@ -8,7 +8,7 @@ const ArtworkItem = ({ data, activeType }: { data: IArtworkItem; activeType: str
       <div className="pt-[88px] px-6 flex flex-col justify-between h-full">
         <div className="px-[24px]">
           <Link to={`/artworks/${activeType}/${data.id}`}>
-            <div className="text-[20px] leading-[24px] font-semibold min-h-[78px] mb-6 line-clamp-3">
+            <div className="text-[20px] leading-[24px] font-semibold min-h-[78px] mb-6 line-clamp-3 break-words">
               {data.name}
             </div>
           </Link>
@@ -28,7 +28,7 @@ const ArtworkItem = ({ data, activeType }: { data: IArtworkItem; activeType: str
             ))}
           </div>
         </div>
-        <img alt="" src={data.thumbnailImage} />
+        <img alt="" className="object-contain max-h-[26vh]" src={data.thumbnailImage.url} />
       </div>
     </div>
   );

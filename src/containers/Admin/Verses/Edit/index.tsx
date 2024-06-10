@@ -2,6 +2,7 @@ import { DeleteOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-layout';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form } from 'antd';
+import DeleteButton from 'components/DeleteButton';
 import DateInput from 'components/Form/DateInput';
 import TextAreaInput from 'components/Form/TextAreaInput';
 import TextInput from 'components/Form/TextInput';
@@ -58,7 +59,7 @@ const AdminVerseEdit = () => {
   };
 
   return (
-    <PageContainer>
+    <PageContainer extra={<DeleteButton collectionName="verses" id={id} />}>
       <div className="py-8 px-6 bg-white max-w-4xl mx-auto">
         <Form layout="vertical" onFinish={handleSubmit(handleCreateArtwork)}>
           <TextInput control={control} label="Name" name="name" required />
@@ -104,7 +105,8 @@ const AdminVerseEdit = () => {
           >
             Add More
           </Button>
-          <div className="flex justify-end">
+          <div className="flex justify-end gap-2">
+            <Button onClick={() => navigate(-1)}>Cancel</Button>
             <Button htmlType="submit" loading={isUpdating} type="primary">
               Save
             </Button>

@@ -7,7 +7,7 @@ export type IArtworkItem = {
   createdAt: string;
   updatedAt: string;
   content: string;
-  thumbnailImage: string;
+  thumbnailImage: { url: string };
   videoUrl?: string;
   images?: { url: string }[];
   material: string;

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 const PublicationItem = ({ data }: { data: IBookItem }) => {
   return (
-    <div className="w-1/4 black-right-border h-max">
-      <div className="">
+    <div className="w-1/4 black-right-border h-[100%]">
+      <div className="flex flex-col h-full">
         <div className="py-10 px-12">
           <Link to={`/writings/publications/${data.id}`}>
             <div className="text-[20px] leading-6 font-semibold min-h-[120px] mb-4 line-clamp-5">
@@ -42,9 +42,9 @@ const PublicationItem = ({ data }: { data: IBookItem }) => {
             </div>
           )}
         </div>
-        <div className="px-12 mt-10">
+        <div className="px-12 mt-10 flex flex-col flex-1 justify-end">
           <Link to={`/writings/publications/${data.id}`}>
-            <img alt="" className="mx-auto h-auto" src={data.imageUrl.url} />
+            <img alt="" className="mx-auto h-auto max-h-[25vh]" src={data.imageUrl.url} />
           </Link>
         </div>
       </div>

@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { PageContainer } from '@ant-design/pro-layout';
 import { Button } from 'antd';
+import DeleteButton from 'components/DeleteButton';
 import useFetch from 'hooks/useFetch';
 import { Link } from 'react-router-dom';
 
@@ -18,7 +19,10 @@ const ResearchDetail = ({ id }: { id: string }) => {
     id,
   });
   return (
-    <PageContainer className="bg-white mt-4">
+    <PageContainer
+      className="bg-white mt-4"
+      extra={<DeleteButton collectionName="research" id={id} />}
+    >
       <div className="content-container flex-1 overflow-auto">
         <div className="flex justify-end">
           <Link to={`/admin/research/${id}/edit`}>

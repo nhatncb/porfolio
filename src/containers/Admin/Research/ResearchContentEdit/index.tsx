@@ -2,6 +2,7 @@ import { DeleteOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-layout';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form } from 'antd';
+import DeleteButton from 'components/DeleteButton';
 import TextAreaInput from 'components/Form/TextAreaInput';
 import TextInput from 'components/Form/TextInput';
 import type { FieldValue } from 'firebase/firestore';
@@ -57,7 +58,7 @@ const ResearchContentEdit = () => {
   });
 
   return (
-    <PageContainer>
+    <PageContainer extra={<DeleteButton collectionName="research" id={id} />}>
       <div className="py-8 px-6 bg-white max-w-4xl mx-auto mt-4">
         <Form layout="vertical" onFinish={handleSubmit(handleUpdateArtwork)}>
           <TextInput control={control} label="Title" name="title" required />
@@ -95,7 +96,8 @@ const ResearchContentEdit = () => {
           >
             Add More
           </Button>
-          <div className="flex justify-end">
+          <div className="flex justify-end gap-2">
+            <Button onClick={() => navigate(-1)}>Cancel</Button>
             <Button htmlType="submit" loading={isCreating} type="primary">
               Save
             </Button>

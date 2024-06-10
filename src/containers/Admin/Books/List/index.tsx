@@ -1,14 +1,15 @@
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns } from '@ant-design/pro-table';
-import { Button } from 'antd';
+import { Button, Flex } from 'antd';
 import CustomTable from 'components/CustomTable';
+import DeleteButton from 'components/DeleteButton';
 import useList from 'hooks/useList';
 import type { IBookItem } from 'models/books/types';
 import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
 const AdminBookList = () => {
-  const { list, pagination, isFetching } = useList<IBookItem>({ collectionName: 'books' });
+  const { list, pagination, isFetching, refetch } = useList<IBookItem>({ collectionName: 'books' });
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -29,16 +30,19 @@ const AdminBookList = () => {
       width: 300,
     },
     {
-      width: 136,
+      width: 156,
       fixed: 'right',
       render: (_, { id }) => (
-        <Button
-          className="w-full max-w-[96px]"
-          onClick={() => navigate(`${pathname}/${id}`)}
-          size="small"
-        >
-          Edit
-        </Button>
+        <Flex gap={8}>
+          <Button
+            className="w-full max-w-[96px]"
+            onClick={() => navigate(`${pathname}/${id}`)}
+            size="small"
+          >
+            Edit
+          </Button>
+          <DeleteButton collectionName="books" id={id} onSuccess={refetch} />
+        </Flex>
       ),
     },
   ];

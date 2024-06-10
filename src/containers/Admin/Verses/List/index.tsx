@@ -1,7 +1,8 @@
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns } from '@ant-design/pro-table';
-import { Button } from 'antd';
+import { Button, Flex } from 'antd';
 import CustomTable from 'components/CustomTable';
+import DeleteButton from 'components/DeleteButton';
 import dayjs from 'dayjs';
 import useList from 'hooks/useList';
 import type { IVerseItem } from 'models/verses/types';
@@ -9,7 +10,7 @@ import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
 const AdminVerseList = () => {
-  const { list, pagination, isFetching } = useList<IVerseItem>({
+  const { list, pagination, isFetching, refetch } = useList<IVerseItem>({
     collectionName: 'verses',
     orderByField: 'time',
     order: 'desc',
@@ -39,16 +40,19 @@ const AdminVerseList = () => {
       render: (_, { time }) => dayjs(time).format('YYYY'),
     },
     {
-      width: 136,
+      width: 156,
       fixed: 'right',
       render: (_, { id }) => (
-        <Button
-          className="w-full max-w-[96px]"
-          onClick={() => navigate(`${pathname}/${id}`)}
-          size="small"
-        >
-          Edit
-        </Button>
+        <Flex gap={8}>
+          <Button
+            className="w-full max-w-[96px]"
+            onClick={() => navigate(`${pathname}/${id}`)}
+            size="small"
+          >
+            Edit
+          </Button>
+          <DeleteButton collectionName="verses" id={id} onSuccess={refetch} />
+        </Flex>
       ),
     },
   ];

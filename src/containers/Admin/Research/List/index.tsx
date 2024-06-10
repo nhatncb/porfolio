@@ -1,7 +1,8 @@
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns } from '@ant-design/pro-table';
-import { Button } from 'antd';
+import { Button, Flex } from 'antd';
 import CustomTable from 'components/CustomTable';
+import DeleteButton from 'components/DeleteButton';
 import useList from 'hooks/useList';
 import type { IResearchItem } from 'models/research/types';
 import { useLocation, useNavigate } from 'react-router';
@@ -35,16 +36,19 @@ const ResearchList = () => {
       dataIndex: 'keywords',
     },
     {
-      width: 136,
+      width: 156,
       fixed: 'right',
       render: (_, { id }) => (
-        <Button
-          className="w-full max-w-[96px]"
-          onClick={() => navigate(`${pathname}/${id}`)}
-          size="small"
-        >
-          Edit
-        </Button>
+        <Flex gap={8}>
+          <Button
+            className="w-full max-w-[96px]"
+            onClick={() => navigate(`${pathname}/${id}`)}
+            size="small"
+          >
+            Edit
+          </Button>
+          <DeleteButton collectionName="research" id={id} />
+        </Flex>
       ),
     },
   ];

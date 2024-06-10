@@ -1,7 +1,8 @@
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns } from '@ant-design/pro-table';
-import { Button } from 'antd';
+import { Button, Flex } from 'antd';
 import CustomTable from 'components/CustomTable';
+import DeleteButton from 'components/DeleteButton';
 import dayjs from 'dayjs';
 import useList from 'hooks/useList';
 import type { INewsItem } from 'models/news/types';
@@ -9,7 +10,7 @@ import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
 const AdminNewsList = () => {
-  const { list, pagination, isFetching } = useList<INewsItem>({ collectionName: 'news' });
+  const { list, pagination, isFetching, refetch } = useList<INewsItem>({ collectionName: 'news' });
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -40,16 +41,19 @@ const AdminNewsList = () => {
         `${dayjs(time[0]).format('HH:mm')} - ${dayjs(time[1]).format('HH:mm')}`,
     },
     {
-      width: 136,
+      width: 156,
       fixed: 'right',
       render: (_, { id }) => (
-        <Button
-          className="w-full max-w-[96px]"
-          onClick={() => navigate(`${pathname}/${id}`)}
-          size="small"
-        >
-          Edit
-        </Button>
+        <Flex gap={8}>
+          <Button
+            className="w-full max-w-[96px]"
+            onClick={() => navigate(`${pathname}/${id}`)}
+            size="small"
+          >
+            Edit
+          </Button>
+          <DeleteButton collectionName="news" id={id} onSuccess={refetch} />
+        </Flex>
       ),
     },
   ];

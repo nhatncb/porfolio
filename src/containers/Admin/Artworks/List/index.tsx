@@ -1,14 +1,15 @@
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns } from '@ant-design/pro-table';
-import { Button, Tag } from 'antd';
+import { Button, Flex, Tag } from 'antd';
 import CustomTable from 'components/CustomTable';
+import DeleteButton from 'components/DeleteButton';
 import useList from 'hooks/useList';
 import type { IArtworkItem } from 'models/artwork/types';
 import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
 const AdminArtworkList = () => {
-  const { list, pagination, isFetching } = useList<IArtworkItem>({
+  const { list, pagination, isFetching, refetch } = useList<IArtworkItem>({
     collectionName: 'artworks',
     orderByField: 'time',
   });
@@ -43,16 +44,19 @@ const AdminArtworkList = () => {
         )),
     },
     {
-      width: 136,
+      width: 156,
       fixed: 'right',
       render: (_, { id }) => (
-        <Button
-          className="w-full max-w-[96px]"
-          onClick={() => navigate(`${pathname}/${id}`)}
-          size="small"
-        >
-          Edit
-        </Button>
+        <Flex gap={8}>
+          <Button
+            className="w-full max-w-[96px]"
+            onClick={() => navigate(`${pathname}/${id}`)}
+            size="small"
+          >
+            Edit
+          </Button>
+          <DeleteButton collectionName="artworks" id={id} onSuccess={refetch} />
+        </Flex>
       ),
     },
   ];

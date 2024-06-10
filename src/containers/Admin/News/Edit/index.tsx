@@ -1,6 +1,7 @@
 import { PageContainer } from '@ant-design/pro-layout';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form } from 'antd';
+import DeleteButton from 'components/DeleteButton';
 import DateInput from 'components/Form/DateInput';
 import TextAreaInput from 'components/Form/TextAreaInput';
 import TextInput from 'components/Form/TextInput';
@@ -48,7 +49,7 @@ const AdminNewsEdit = () => {
   };
 
   return (
-    <PageContainer>
+    <PageContainer extra={<DeleteButton collectionName="news" id={id} />}>
       <div className="py-8 px-6 bg-white max-w-4xl mx-auto">
         <Form layout="vertical" onFinish={handleSubmit(handleCreateNews)}>
           <TextInput control={control} label="Name" name="name" required />
@@ -59,7 +60,8 @@ const AdminNewsEdit = () => {
           </div>
           <TimeRangeInput control={control} label="Time" name="time" required />
           <TextAreaInput control={control} label="Description" name="description" rows={5} />
-          <div className="flex justify-end">
+          <div className="flex justify-end gap-2">
+            <Button onClick={() => navigate(-1)}>Cancel</Button>
             <Button htmlType="submit" loading={isCreating} type="primary">
               Save
             </Button>

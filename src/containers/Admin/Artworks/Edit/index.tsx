@@ -3,6 +3,7 @@ import { PageContainer } from '@ant-design/pro-layout';
 import { yupResolver } from '@hookform/resolvers/yup';
 import type { InputRef } from 'antd';
 import { Button, Divider, Form, Input, Space, Spin } from 'antd';
+import DeleteButton from 'components/DeleteButton';
 import DateInput from 'components/Form/DateInput';
 import SelectInput from 'components/Form/SelectInput';
 import TextAreaInput from 'components/Form/TextAreaInput';
@@ -109,7 +110,7 @@ const AdminArtworkEdit = () => {
     return <Spin />;
   }
   return (
-    <PageContainer>
+    <PageContainer extra={<DeleteButton collectionName="artworks" id={id} />}>
       <div className="py-8 px-6 bg-white max-w-4xl mx-auto">
         <Form layout="vertical" onFinish={handleSubmit(handleUpdateArtwork)}>
           <div className="black-border p-4 mb-6" style={{ borderRadius: 8 }}>
@@ -199,7 +200,8 @@ const AdminArtworkEdit = () => {
             required
           />
           <TextAreaInput control={control} label="Content" name="content" required rows={9} />
-          <div className="flex justify-end">
+          <div className="flex justify-end gap-2">
+            <Button onClick={() => navigate(-1)}>Cancel</Button>
             <Button htmlType="submit" loading={isCreating} type="primary">
               Save
             </Button>

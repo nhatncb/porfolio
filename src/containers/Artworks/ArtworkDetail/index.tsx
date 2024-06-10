@@ -50,6 +50,9 @@ const ArtworkDetail = () => {
   const [spring, api] = useSpring(() => ({ height: '127px' }), []);
 
   useEffect(() => {
+    setActiveArt(0);
+  }, [id]);
+  useEffect(() => {
     if (ref.current && !isFirstRender) {
       api.start({
         height: showMore ? `${(ref.current?.offsetHeight || 0) + 46}px` : '127px',
@@ -205,11 +208,11 @@ const ArtworkDetail = () => {
             </Link>
             <div className="flex gap-8 items-center">
               <div className="flex align-middle text-[12px] leading-[16px] gap-1">
-                <div>material: {detail?.material}</div>
+                <div>{detail?.material}</div>
                 <div>|</div>
-                <div>location: {detail?.place}</div>
+                <div>{detail?.place}</div>
                 <div>|</div>
-                <div>year: {detail?.time && dayjs(detail?.time).format('YYYY')}</div>
+                <div>{detail?.time && dayjs(detail?.time).format('YYYY')}</div>
               </div>
               <div className="flex gap-4">
                 <button onClick={() => handleNavigate()}>
