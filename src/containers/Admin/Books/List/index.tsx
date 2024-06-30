@@ -3,6 +3,7 @@ import type { ProColumns } from '@ant-design/pro-table';
 import { Button, Flex } from 'antd';
 import CustomTable from 'components/CustomTable';
 import DeleteButton from 'components/DeleteButton';
+import dayjs from 'dayjs';
 import useList from 'hooks/useList';
 import type { IBookItem } from 'models/books/types';
 import { useLocation, useNavigate } from 'react-router';
@@ -27,6 +28,12 @@ const AdminBookList = () => {
     {
       title: 'Author',
       dataIndex: 'author',
+      width: 300,
+    },
+    {
+      title: 'Time',
+      dataIndex: 'time',
+      render: (_, { time }) => time && dayjs(time).format('YYYY'),
       width: 300,
     },
     {

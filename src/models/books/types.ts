@@ -7,4 +7,5 @@ export type IBookItem = {
   updatedAt: string;
   createdAt: string;
   buyUrls: { url: string; displayUrl: string }[];
+  time: string;
 };

@@ -8,7 +8,7 @@ const schema = object({
   place: string().required().trim(),
   verses: array().of(
     object({
-      content: string().trim().required(),
+      content: string().required(),
     }),
   ),
 });

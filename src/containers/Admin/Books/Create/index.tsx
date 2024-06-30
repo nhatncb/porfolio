@@ -2,6 +2,7 @@ import { DeleteOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-layout';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form } from 'antd';
+import DateInput from 'components/Form/DateInput';
 import TextAreaInput from 'components/Form/TextAreaInput';
 import TextInput from 'components/Form/TextInput';
 import UploadInput from 'components/Form/Upload';
@@ -32,6 +33,7 @@ const AdminBookCreate = () => {
       author: '',
       imageUrl: null as never,
       aboutContent: '',
+      time: '',
     },
   });
 
@@ -54,6 +56,14 @@ const AdminBookCreate = () => {
           <TextInput control={control} label="Name" name="name" required />
           <TextInput control={control} label="Author" name="author" required />
           <TextAreaInput control={control} label="Content" name="aboutContent" required rows={7} />
+          <DateInput
+            control={control}
+            format="YYYY"
+            label="Time"
+            name="time"
+            picker="year"
+            required
+          />
           <UploadInput control={control} label="Image" name="imageUrl" required />
           {fields.map((item, index) => {
             return (

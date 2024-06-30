@@ -3,6 +3,7 @@ import { PageContainer } from '@ant-design/pro-layout';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form } from 'antd';
 import DeleteButton from 'components/DeleteButton';
+import DateInput from 'components/Form/DateInput';
 import TextAreaInput from 'components/Form/TextAreaInput';
 import TextInput from 'components/Form/TextInput';
 import UploadInput from 'components/Form/Upload';
@@ -43,6 +44,7 @@ const AdminBookEdit = () => {
       author: data?.author || '',
       imageUrl: data?.imageUrl || (null as never),
       aboutContent: data?.aboutContent || '',
+      time: data?.time || '',
     },
   });
 
@@ -66,6 +68,14 @@ const AdminBookEdit = () => {
           <TextInput control={control} label="Author" name="author" required />
           <TextAreaInput control={control} label="Content" name="aboutContent" required rows={7} />
           <UploadInput control={control} label="Image" name="imageUrl" required />
+          <DateInput
+            control={control}
+            format="YYYY"
+            label="Time"
+            name="time"
+            picker="year"
+            required
+          />
           {fields.map((item, index) => {
             return (
               <div key={item.id}>

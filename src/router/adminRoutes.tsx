@@ -3,6 +3,7 @@ import {
   FileTextOutlined,
   PictureOutlined,
   StarOutlined,
+  TagOutlined,
   TrophyOutlined,
   UserOutlined,
 } from '@ant-design/icons';
@@ -20,6 +21,7 @@ import ResearchList from 'containers/Admin/Research/List';
 import ResearchContentEdit from 'containers/Admin/Research/ResearchContentEdit';
 import StatementAdminContent from 'containers/Admin/Statement';
 import StatementEdit from 'containers/Admin/Statement/Edit';
+import TagList from 'containers/Admin/Tags/List';
 import AdminVerseCreate from 'containers/Admin/Verses/Create';
 import AdminVerseEdit from 'containers/Admin/Verses/Edit';
 import AdminVerseList from 'containers/Admin/Verses/List';
@@ -126,7 +128,12 @@ const adminRoutes = [
     name: 'Edit Research',
     hideInMenu: true,
   },
-
+  {
+    path: 'tags',
+    icon: <TagOutlined />,
+    element: <TagList />,
+    name: 'Tags',
+  },
   {
     path: '',
     element: <Navigate replace to="art-works" />,

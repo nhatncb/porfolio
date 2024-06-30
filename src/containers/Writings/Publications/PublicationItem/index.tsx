@@ -12,7 +12,8 @@ const PublicationItem = ({ data }: { data: IBookItem }) => {
               {data.name}
             </div>
           </Link>
-          <div className="normal-text min-h-[36px] line-clamp-2 font-medium">by {data.author}</div>
+          <div className="normal-text min-h-[40px] line-clamp-2 font-medium">{data.author}</div>
+          <div className="normal-text">{'2023'}</div>
         </div>
         <div
           className={`grid ${

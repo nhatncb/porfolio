@@ -87,6 +87,14 @@ const ResearchContentEdit = () => {
               </div>
             );
           })}
+          <Button
+            className="my-2"
+            icon={<PlusCircleOutlined />}
+            onClick={() => append({ data: '' })}
+            type="primary"
+          >
+            Add More
+          </Button>
           <TextInput control={control} label="View full" name="viewFullUrl" required />
           <Button
             className="my-2"

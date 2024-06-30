@@ -34,7 +34,11 @@ const AboutPage = () => {
     id: 'main',
   });
 
-  const { list: data } = useList<INewsItem>({ collectionName: 'news', staleTime: Infinity });
+  const { list: data } = useList<INewsItem>({
+    collectionName: 'news',
+    staleTime: Infinity,
+    orderByField: 'startDate',
+  });
   const news = data.slice(page === 1 ? (page - 1) * 8 : (page - 1) * 8 - 1, page - 1 + 8);
   const renderContent = (path: string) => {
     if (path === '/statement') {

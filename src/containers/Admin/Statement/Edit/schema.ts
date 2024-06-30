@@ -9,9 +9,6 @@ const schema = object({
     url: string().required(),
   }),
   cvUrl: string().required().trim(),
-  born: string().required().trim(),
-  email: string().required().trim(),
-  phone: string().required().trim(),
   introduction: string().required().trim(),
   otherInfo: string().required().trim(),
 });

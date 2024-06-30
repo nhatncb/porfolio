@@ -40,9 +40,6 @@ const StatementEdit = () => {
         name: data?.thumbnailImage.name || '',
         status: 'done',
       },
-      born: data?.born || '',
-      email: data?.email || '',
-      phone: data?.phone || '',
       introduction: data?.introduction || '',
       cvUrl: data?.cvUrl || '',
       otherInfo: data?.otherInfo || '',
@@ -69,9 +66,6 @@ const StatementEdit = () => {
       <div className="py-8 px-6 bg-white max-w-4xl mx-auto">
         <Form layout="vertical" onFinish={handleSubmit(handleUpdateArtwork)}>
           <UploadInput control={control} label="Thumbnail" name="thumbnailImage" required />
-          <TextInput control={control} label="Born" name="born" required />
-          <TextInput control={control} label="Email" name="email" required />
-          <TextInput control={control} label="Phone" name="phone" required />
           <TextInput control={control} label="CV Url" name="cvUrl" required />
           <EditorInput control={control} label="Introduction" name="introduction" required />
           <TextAreaInput control={control} label="Other Info" name="otherInfo" required rows={5} />

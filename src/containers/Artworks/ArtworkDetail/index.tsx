@@ -181,7 +181,9 @@ const ArtworkDetail = () => {
             </div>
             <div className="relative w-full">
               <animated.div
-                className={`bg-white w-full px-10 overflow-hidden absolute bottom-0 right-0 py-[20px] black-top-border black-left-border ${
+                className={`bg-white w-full px-10 ${
+                  showMore ? 'overflow-scroll' : 'overflow-hidden'
+                } absolute bottom-0 right-0 py-[20px] black-top-border black-left-border max-h-[calc(100vh_-_72px)] ${
                   showMore ? 'opacity-[0.9]' : 'opacity-1'
                 }`}
                 style={spring}

@@ -30,7 +30,7 @@ const AdminVerseEdit = () => {
   const { mutateAsync: update, isPending: isUpdating } = useUpdate<
     VerseFormSchema & { createdAt: FieldValue; updatedAt: FieldValue }
   >({
-    collectionName: 'artworks',
+    collectionName: 'verses',
     id,
     defaultToast: true,
   });

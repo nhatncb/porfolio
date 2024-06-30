@@ -39,10 +39,10 @@ const BookDetail = () => {
       </div>
       <div className="flex flex-1 overflow-hidden">
         <div className="black-right-border black-bottom-border flex flex-col flex-1">
-          <div className="py-[18px] px-12 black-bottom-border normal-text font-medium">
-            by {detail?.author}
+          <div className="py-[18px] px-12 black-bottom-border normal-text font-medium min-h-[57px]">
+            {detail?.author}
           </div>
-          <div className="p-16 whitespace-pre-line overflow-auto h-full flex flex-col justify-center">
+          <div className="p-16 whitespace-pre-line overflow-auto">
             <span className="mx-auto max-w-[775px] block normal-text !leading-[20px]">
               {detail?.aboutContent}
             </span>

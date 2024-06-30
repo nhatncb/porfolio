@@ -16,7 +16,15 @@ const DeleteButton = ({
   const handleDelete = () => {
     Modal.confirm({
       content: 'Are you sure to delete this document?',
-      onOk: () => deleteDoc(null, { onSuccess }),
+      onOk: () =>
+        deleteDoc(null, {
+          onSuccess: () => {
+            if (onSuccess) {
+              onSuccess();
+            }
+            Modal.destroyAll();
+          },
+        }),
     });
   };
 

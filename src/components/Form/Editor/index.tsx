@@ -1,6 +1,7 @@
 import './styles.css';
 
 import { Color } from '@tiptap/extension-color';
+import HardBreak from '@tiptap/extension-hard-break';
 import Link from '@tiptap/extension-link';
 import { TextAlign } from '@tiptap/extension-text-align';
 import TextStyle from '@tiptap/extension-text-style';
@@ -47,6 +48,13 @@ const EditorInput = <TFormValues extends FieldValues>({
       Color,
       TextAlign.configure({ types: ['heading', 'paragraph', 'image'] }),
       Link,
+      HardBreak.extend({
+        addKeyboardShortcuts() {
+          return {
+            Enter: () => this.editor.commands.setHardBreak(),
+          };
+        },
+      }),
     ],
     content: field.value || '',
     onUpdate: ({ editor: editorState }) => {

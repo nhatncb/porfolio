@@ -9,9 +9,7 @@ import Research from 'containers/Research';
 import ResearchDetail from 'containers/Research/Detail';
 import Writings from 'containers/Writings';
 import PublicationDetail from 'containers/Writings/PublicationDetail';
-import Publications from 'containers/Writings/Publications';
 import VerseDetail from 'containers/Writings/VerseDetail';
-import Verses from 'containers/Writings/Verses';
 import type { RouteObject } from 'react-router';
 import { Navigate } from 'react-router';
 import { createBrowserRouter } from 'react-router-dom';
@@ -59,15 +57,15 @@ export const indexRoutes: RouteObject[] = [
         element: <ArtworkDetail />,
       },
       {
-        path: 'writings',
+        path: 'writings/:type',
         element: <Writings />,
         children: [
-          { path: 'verses', element: <Verses /> },
+          // { path: 'verses', element: <Verses /> },
           // { path: 'essays', element: <div /> },
-          {
-            path: 'publications',
-            element: <Publications />,
-          },
+          // {
+          //   path: 'publications',
+          //   element: <Publications />,
+          // },
         ],
       },
       {

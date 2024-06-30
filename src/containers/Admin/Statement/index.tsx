@@ -30,11 +30,11 @@ const StatementAdminContent = () => {
               width={268}
             />
             <div className="mt-8">
-              <div className="flex flex-col gap-[2px]">
+              {/* <div className="flex flex-col gap-[2px]">
                 <div className="normal-text">B: {data?.born || ''}</div>
                 <div className="normal-text">E: {data?.email || ''}</div>
                 <div className="normal-text">T: {data?.phone || ''}</div>
-              </div>
+              </div> */}
               {data?.otherInfo && (
                 <div className="mt-2 normal-text whitespace-pre-line">{data.otherInfo}</div>
               )}
