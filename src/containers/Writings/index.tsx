@@ -12,7 +12,7 @@ import Verses from './Verses';
 
 const MENUS = [
   {
-    label: 'verses',
+    label: 'writings',
     to: '/writings/verses',
   },
   // {
@@ -66,7 +66,7 @@ const Writings = () => {
     <div className="h-screen bg-white flex flex-1">
       <div className="flex-1 flex flex-col">
         <div className="header h-[104px]">
-          <p className="m-0 page-title">Writings</p>
+          <p className="m-0 page-title">Works</p>
         </div>
         <div className="flex flex-shrink-0 black-bottom-border h-[72px]">
           <div className="px-[48px] flex-auto flex gap-4 items-center black-right-border">

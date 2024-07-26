@@ -64,7 +64,7 @@ const AdminArtworkList = () => {
     <PageContainer
       extra={
         <Link to="/admin/art-works/create">
-          <Button type="primary">Create Artworks</Button>
+          <Button type="primary">Create Art</Button>
         </Link>
       }
     >

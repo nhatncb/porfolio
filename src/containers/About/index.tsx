@@ -16,11 +16,11 @@ import StatementContent from './Statement';
 
 const MENUS = [
   {
-    label: 'statement',
+    label: 'Statement',
     to: '/statement',
   },
   {
-    label: 'news',
+    label: 'News',
     to: '/news',
   },
 ];

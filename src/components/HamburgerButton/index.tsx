@@ -35,7 +35,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const writingMenus = [
   {
-    title: 'Verses',
+    title: 'Writings',
     url: '/writings/verses',
   },
   // {
@@ -69,8 +69,8 @@ const HamburgetButton = () => {
   }));
 
   const categories = [
-    { title: 'Artworks', menus: artWorkMenus, activeKeys: artWorkMenus.map((menu) => menu.url) },
-    { title: 'Writings', menus: writingMenus, activeKeys: writingMenus.map((menu) => menu.url) },
+    { title: 'Art', menus: artWorkMenus, activeKeys: artWorkMenus.map((menu) => menu.url) },
+    { title: 'Works', menus: writingMenus, activeKeys: writingMenus.map((menu) => menu.url) },
     { title: 'Research', menus: researchMenus, activeKeys: researchMenus.map((menu) => menu.url) },
   ] as const;
 

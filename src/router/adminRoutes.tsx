@@ -59,19 +59,19 @@ const adminRoutes = [
   {
     path: 'art-works',
     element: <AdminArtworkList />,
-    name: 'Art works',
+    name: 'Arts',
     icon: <PictureOutlined />,
   },
   {
     path: 'art-works/create',
     element: <ArtworkCreate />,
-    name: ' Create Artworks',
+    name: ' Create Art',
     hideInMenu: true,
   },
   {
     path: 'art-works/:id',
     element: <AdminArtworkEdit />,
-    name: ' Edit Artworks',
+    name: ' Edit Art',
     hideInMenu: true,
   },
   {
@@ -95,7 +95,7 @@ const adminRoutes = [
   {
     path: 'verses',
     element: <AdminVerseList />,
-    name: 'Verses',
+    name: 'Writings',
     icon: <FileTextOutlined />,
   },
   {
