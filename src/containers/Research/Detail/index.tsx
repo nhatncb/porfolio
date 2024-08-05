@@ -23,7 +23,7 @@ const ResearchDetail = () => {
   return (
     <>
       <div className="content-container flex-1 overflow-auto">
-        <div className="p-10 flex flex-col justify-between h-full">
+        <div className="p-[40px_48px] flex flex-col justify-between h-full">
           <div className="flex justify-end">
             <div className="flex items-end flex-col">
               <div className="normal-text font-medium">Keywords: {data?.keywords} </div>
@@ -33,7 +33,7 @@ const ResearchDetail = () => {
                 } gap-6 mt-6 normal-text pb-[84px]`}
               >
                 {(data?.content || []).map((item, index) => (
-                  <div className="max-w-[300px] leading-[20px]" key={index}>
+                  <div className="max-w-[300px] leading-[20px] whitespace-pre-line" key={index}>
                     {item.data}
                   </div>
                 ))}
@@ -64,7 +64,7 @@ const ResearchDetail = () => {
         >
           <div className="flex gap-3 svg-24 items-center svg-16">
             <RigtIcon />
-            <div className="normal-text">view full</div>
+            <div className="normal-text">View full</div>
           </div>
         </Link>
       </div>

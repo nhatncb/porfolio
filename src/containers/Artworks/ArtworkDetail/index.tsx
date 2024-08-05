@@ -206,7 +206,7 @@ const ArtworkDetail = () => {
           <div className="flex py-[23.5px] px-[48px] black-top-border justify-between">
             <Link className="flex items-center gap-[6px]" to={`/artworks/${type}`}>
               <PlusIcon />
-              <div className="normal-text font-semibold hover-underline">artwork list</div>
+              <div className="normal-text font-semibold hover-underline">Arts</div>
             </Link>
             <div className="flex gap-8 items-center">
               <div className="flex align-middle text-[12px] leading-[16px] gap-1">

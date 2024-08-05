@@ -41,13 +41,19 @@ const VerseDetail = () => {
       <div className="flex-1 flex flex-col">
         <div className="text-[20px] leading-[26px] flex-1 black-bottom-border p-[84px_48px] grid-cols-4 grid gap-x-[80px] gap-y-[24px] whitespace-pre-line overflow-auto">
           <div className="col-start-1 col-span-1 relative">
-            <span className="">{detail?.verses[0]?.content}</span>
+            <span className="text-[16px] leading-[22px] whitespace-pre-line">
+              {detail?.verses[0]?.content}
+            </span>
           </div>
           <div className="col-start-2 col-span-1 relative">
-            <span className="">{detail?.verses[1]?.content}</span>
+            <span className="text-[16px] leading-[22px] whitespace-pre-line">
+              {detail?.verses[1]?.content}
+            </span>
           </div>
           <div className="col-start-3 col-span-1 relative">
-            <span className="">{detail?.verses[2]?.content}</span>
+            <span className="text-[16px] leading-[22px] whitespace-pre-line">
+              {detail?.verses[2]?.content}
+            </span>
           </div>
         </div>
         <div className="h-[100px] px-12 py-[25px] flex justify-end items-center black-bottom-border text-[32px] leading-[36px] font-semibold">
@@ -56,7 +62,7 @@ const VerseDetail = () => {
         <div className="flex py-6 px-[48px] justify-between">
           <Link className="flex items-center gap-[6px]" to="/writings/verses">
             <PlusIcon />
-            <div className="normal-text font-medium">verse list</div>
+            <div className="normal-text font-medium">Writings</div>
           </Link>
           <div className="flex gap-8">
             <div className="text-[12px] leading-[16px] flex gap-1">

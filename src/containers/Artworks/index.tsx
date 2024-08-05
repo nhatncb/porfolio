@@ -53,7 +53,7 @@ const Artworks = () => {
     <div className="h-screen bg-white flex">
       <div className="flex-1 flex flex-col">
         <div className="header h-[104px]">
-          <p className="m-0 page-title">Art</p>
+          <p className="m-0 page-title">Arts</p>
         </div>
         <div className="flex flex-shrink-0 black-bottom-border h-[72px]">
           <div className="flex flex-auto px-[48px] gap-4 black-right-border items-center">

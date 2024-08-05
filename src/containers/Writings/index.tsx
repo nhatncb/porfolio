@@ -12,7 +12,7 @@ import Verses from './Verses';
 
 const MENUS = [
   {
-    label: 'writings',
+    label: 'Writings',
     to: '/writings/verses',
   },
   // {
@@ -20,7 +20,7 @@ const MENUS = [
   //   to: '/writings/essays',
   // },
   {
-    label: 'publications',
+    label: 'Publications',
     to: '/writings/publications',
   },
 ];

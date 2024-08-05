@@ -29,7 +29,7 @@ const ResearchDetail = ({ id }: { id: string }) => {
             <Button type="primary">Edit</Button>
           </Link>
         </div>
-        <div className="p-10 flex flex-col justify-between h-full">
+        <div className="p-[40px_48px] flex flex-col justify-between h-full">
           <div className="flex justify-end">
             <div className="flex items-end flex-col">
               <div className="normal-text font-medium">Keywords: {data?.keywords} </div>

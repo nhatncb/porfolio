@@ -69,7 +69,7 @@ const HamburgetButton = () => {
   }));
 
   const categories = [
-    { title: 'Art', menus: artWorkMenus, activeKeys: artWorkMenus.map((menu) => menu.url) },
+    { title: 'Arts', menus: artWorkMenus, activeKeys: artWorkMenus.map((menu) => menu.url) },
     { title: 'Works', menus: writingMenus, activeKeys: writingMenus.map((menu) => menu.url) },
     { title: 'Research', menus: researchMenus, activeKeys: researchMenus.map((menu) => menu.url) },
   ] as const;

@@ -47,7 +47,7 @@ const ArtisticEducation = () => {
         by {data?.author}
         <div className="flex gap-3 svg-24 items-center svg-16">
           <RigtIcon />
-          <div className="normal-text">view full</div>
+          <div className="normal-text">View full</div>
         </div>
       </div>
     </>

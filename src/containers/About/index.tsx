@@ -87,7 +87,7 @@ const AboutPage = () => {
               <button className="text-btn hover-underline">
                 <span className="flex items-center gap-2 svg-24 normal-text">
                   <DownloadIcon />
-                  download CV
+                  Download CV
                 </span>
               </button>
             </a>

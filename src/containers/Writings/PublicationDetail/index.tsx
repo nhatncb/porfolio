@@ -85,7 +85,7 @@ const BookDetail = () => {
       <div className="flex-shrink-0 flex py-6 px-[48px] justify-between">
         <Link className="flex items-center gap-[6px]" to="/writings/publications">
           <PlusIcon />
-          <div className="normal-text font-medium">publication list</div>
+          <div className="normal-text font-medium">Publications</div>
         </Link>
         <div className="flex gap-6 items-center">
           <div className="flex gap-4">

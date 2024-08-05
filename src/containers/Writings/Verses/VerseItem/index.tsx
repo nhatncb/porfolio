@@ -10,7 +10,7 @@ const VerseItem = ({ data }: { data: IVerseItem }) => {
     >
       <div className="flex gap-6 items-end">
         <div className="normal-text min-w-[84px]">{dayjs(data.time).format('YYYY')}</div>
-        <div className="text-[20px] font-semibold leading-[24px]">{data.name}</div>
+        <div className="text-[20px] font-semibold leading-[24px] capitalize">{data.name}</div>
       </div>
       <div>
         <div className="normal-text ">{data.author}</div>
