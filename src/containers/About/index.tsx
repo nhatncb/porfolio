@@ -16,7 +16,7 @@ import StatementContent from './Statement';
 
 const MENUS = [
   {
-    label: 'Statement',
+    label: 'Resume',
     to: '/statement',
   },
   {
@@ -60,7 +60,7 @@ const AboutPage = () => {
   return (
     <div className="bg-white w-full flex flex-col">
       <div className="header h-[104px]">
-        <p className="m-0 page-title">About</p>
+        <p className="m-0 page-title">Info</p>
       </div>
       <div className="flex flex-shrink-0 black-bottom-border h-[72px]">
         <div className="px-[48px] flex-auto flex gap-[16px] black-right-border items-center">
