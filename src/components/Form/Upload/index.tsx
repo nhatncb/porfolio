@@ -95,9 +95,13 @@ const UploadInput = <TFormValues extends FieldValues>({
     >
       <Upload
         fileList={field.value ? [field.value] : []}
+        isImageUrl={() => true}
         listType="picture-card"
         onChange={handleChange}
-        onRemove={() => field.onChange(null)}
+        onRemove={() => {
+          console.log('remove');
+          field.onChange(null);
+        }}
         {...props}
       >
         {field.value ? null : uploadButton}
